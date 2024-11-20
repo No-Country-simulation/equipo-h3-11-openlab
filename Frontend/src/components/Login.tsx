@@ -1,82 +1,96 @@
+import { useState } from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import googleIcon from "../assets/icons/google.svg";
+import facebookIcon from "../assets/icons/facebook.svg";
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prevState) => !prevState);
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-[442px] h-auto bg-white px-6 py-10 rounded-xl shadow-lg">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-[#1a1a1a] text-3xl font-semibold">Iniciar sesión</h1>
-          <p className="text-[#1a1a1a] text-sm mt-2">
-            Lorem ipsum dolor sit amet consectetur. Dictum morbi dis ac massa libero nec amet fusce molestie.
+    <div className="w-full flex py-8 justify-center items-center bg-white">
+      <div className="w-[350px] px-3 py-4 bg-white flex flex-col justify-start items-end gap-6 rounded-lg shadow-lg">
+        {/* Título y descripción */}
+        <div className="self-stretch flex flex-col gap-2">
+          <h1 className="text-[#1a1a1a] text-2xl font-semibold">Iniciar sesión</h1>
+          <p className="text-[#1a1a1a] text-xs">
+            Lorem ipsum dolor sit amet consectetur. Dictum morbi dis ac massa libero nec amet.
           </p>
         </div>
 
-        {/* Formulario de Login */}
-        <form className="space-y-6">
-          {/* Correo electrónico */}
-          <div className="flex flex-col">
-            <label htmlFor="email" className="text-sm text-[#6e6e6e] mb-2">
-              Correo electrónico
-            </label>
+        {/* Campos de entrada */}
+        <div className="self-stretch flex flex-col gap-3">
+          {/* Campo Correo */}
+          <div className="w-full h-10 pl-2 pr-3 py-2.5 rounded-md border border-[#6e6e6e] flex items-center gap-2">
+            <FaEnvelope className="w-5 h-5 text-[#6e6e6e]" />
             <input
               type="email"
-              id="email"
-              name="email"
-              className="h-12 px-4 py-3.5 rounded-[10px] border border-[#6e6e6e] text-sm"
-              placeholder="Ingresa tu correo electrónico"
+              placeholder="Correo electrónico"
+              className="w-full text-xs text-[#6e6e6e] outline-none bg-transparent"
             />
           </div>
 
-          {/* Contraseña */}
-          <div className="flex flex-col">
-            <label htmlFor="password" className="text-sm text-[#6e6e6e] mb-2">
-              Contraseña
-            </label>
+          {/* Campo Contraseña */}
+          <div className="w-full h-10 pl-2 pr-3 py-2.5 rounded-md border border-[#6e6e6e] flex items-center gap-2">
+            <FaLock className="w-5 h-5 text-[#6e6e6e]" />
             <input
-              type="password"
-              id="password"
-              name="password"
-              className="h-12 px-4 py-3.5 rounded-[10px] border border-[#6e6e6e] text-sm"
-              placeholder="Ingresa tu contraseña"
+              type={passwordVisible ? "text" : "password"}
+              placeholder="Contraseña"
+              className="w-full text-xs text-[#6e6e6e] outline-none bg-transparent"
             />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="focus:outline-none"
+            >
+              {passwordVisible ? (
+                <AiFillEyeInvisible className="w-5 h-5 text-[#6e6e6e]" />
+              ) : (
+                <AiFillEye className="w-5 h-5 text-[#6e6e6e]" />
+              )}
+            </button>
           </div>
 
-          {/* Olvidaste tu contraseña */}
-          <div className="flex justify-end">
-            <a href="#" className="text-[#3d7bff] text-sm underline">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </div>
+          <a href="#" className="text-[#3d7bff] text-xs underline">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
 
-          {/* Botón de Iniciar sesión */}
-          <button
-            type="submit"
-            className="w-full h-12 bg-[#3d7bff] text-white rounded-[10px] text-base font-semibold"
-          >
-            Iniciar sesión
-          </button>
-        </form>
+        {/* Botón de iniciar sesión */}
+        <button className="self-stretch h-10 bg-[#3d7bff] rounded-md shadow flex items-center justify-center">
+          <span className="text-white text-sm font-semibold">Iniciar sesión</span>
+        </button>
 
-        {/* Continuar con Google y Facebook */}
-        <div className="mt-6 space-y-4">
-          <button className="w-full h-12 px-4 py-3 rounded-2xl border border-[#6e6e6e] text-sm flex items-center justify-center space-x-2">
-            <div className="w-6 h-6 bg-[#d9d9d9] rounded-full"></div>
-            <span className="text-[#1a1a1a]">Continuar con Google</span>
+        {/* Opciones de inicio de sesión con Google y Facebook */}
+        <div className="self-stretch flex flex-col gap-2">
+          <button className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2">
+            <img
+              src={googleIcon}
+              alt="Google Icon"
+              className="w-5 h-5 object-contain"
+            />
+            <span className="text-[#1a1a1a] text-xs">Continuar con Google</span>
           </button>
-          <button className="w-full h-12 px-4 py-3 rounded-2xl border border-[#6e6e6e] text-sm flex items-center justify-center space-x-2">
-            <div className="w-6 h-6 bg-[#d9d9d9] rounded-full"></div>
-            <span className="text-[#1a1a1a]">Continuar con Facebook</span>
+
+          <button className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2">
+            <img
+              src={facebookIcon}
+              alt="Facebook Icon"
+              className="w-5 h-5 object-contain"
+            />
+            <span className="text-[#1a1a1a] text-xs">Continuar con Facebook</span>
           </button>
         </div>
 
-        {/* Enlace de Crear cuenta */}
-        <div className="mt-6 text-center">
-          <p className="text-sm">
-            ¿Aún no tienes cuenta?{" "}
-            <a href="#" className="text-[#3d7bff] underline">
-              Crear una ahora
-            </a>
-          </p>
+        {/* Link para crear cuenta */}
+        <div className="self-stretch flex justify-center items-center">
+          <a href="#" className="text-[#3d7bff] text-xs underline">
+            ¿Aún no tienes cuenta? Crear una ahora
+          </a>
         </div>
       </div>
     </div>
