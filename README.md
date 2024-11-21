@@ -16,15 +16,20 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 
 ## Team Lider
 
-<img src="profile_images/default_picture.png" alt="Jose Contreras" height="100px"/>
+<img src="profile_images/jose_contreras.png" alt="Jose Contreras" height="100px"/>
 
 ### - _Jose Contreras_
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-grey?style=flat&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/joselbcontreras/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joselbcontreras/)
+[![github](https://img.shields.io/badge/github-grey?style=flat&logo=github&logoColor=white)](https://github.com/JoseContrerasDev)
+[![mail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:joselbcontreras@gmail.com)
 
 <hr size="8px"/>
 
 ## Diseño UI/UX
 
-<img src="profile_images/default_picture.png" alt="Paula Sancho" height="100px"/>
+<img src="profile_images/paula_sancho.jpg" alt="Paula Sancho" height="100px"/>
 
 #### - _Paula Sancho_
 
@@ -37,7 +42,7 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 
 ## Frontend
 
-<img src="profile_images/default_picture.png" alt="Antonio Villacrés" height="100px"/>
+<img src="profile_images/antonio_villacres.png" alt="Antonio Villacrés" height="100px"/>
 
 #### - _Antonio Villacrés_
 
@@ -65,7 +70,7 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 
 #### - _Anibal Elbaum_
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-grey?style=flat&logo=ko-fi&logoColor=white)]()
+[![portfolio](https://img.shields.io/badge/my_portfolio-grey?style=flat&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/inganibalelbaum)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/inganibalelbaum)
 [![github](https://img.shields.io/badge/github-grey?style=flat&logo=github&logoColor=white)](https://github.com/andavian)
 [![mail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:ing.elbaum@gmail.com)
@@ -74,11 +79,11 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 
 ## QA
 
-<img src="profile_images/default_picture.png" alt="Ricardo David Minhot" height="100px"/>
+<img src="profile_images/ricardo_minhot.png" alt="Ricardo David Minhot" height="100px"/>
 
 #### - _Ricardo David Minhot_
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-grey?style=flat&logo=ko-fi&logoColor=white)]()
+[![portfolio](https://img.shields.io/badge/my_portfolio-grey?style=flat&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ricardo-david-minhot/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ricardo-david-minhot/)
 [![github](https://img.shields.io/badge/github-grey?style=flat&logo=github&logoColor=white)](https://github.com/rdminhot)
 [![mail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:rdminhot@gmail.com)
