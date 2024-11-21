@@ -6,8 +6,10 @@ import twitter from "../assets/navbar/twitter.svg";
 import line from "../assets/navbar/line.png";
 import LanguageSwitch from "./LanguageSwitch";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -105,31 +107,31 @@ const Navbar = () => {
                 href="#vision"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Visión
+                {t("vision")}
               </a>
               <a
                 href="#iniciativas"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Iniciativas
+                {t("initiatives")}
               </a>
               <a
                 href="#blog"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Blog
+                {t("blog")}
               </a>
               <a
                 href="#entrar"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Entrar
+                {t("login")}
               </a>
               <a
                 href="#empezar"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Empezar
+                {t("getStarted")}
               </a>
             </div>
 
