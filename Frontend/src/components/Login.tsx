@@ -13,7 +13,7 @@ const Login = () => {
 
   return (
     <div className="w-full flex py-8 justify-center items-center bg-white">
-      <div className="w-[350px] px-3 py-4 bg-white flex flex-col justify-start items-end gap-6 rounded-lg shadow-lg">
+      <div className="w-[350px] px-3 py-4 bg-white flex flex-col justify-start items-end gap-6 rounded-lg">
         {/* Título y descripción */}
         <div className="self-stretch flex flex-col gap-2">
           <h1 className="text-[#1a1a1a] text-2xl font-semibold">Iniciar sesión</h1>
