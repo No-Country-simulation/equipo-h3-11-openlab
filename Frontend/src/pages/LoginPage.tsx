@@ -5,14 +5,12 @@ import Footer from '../components/Footer';
 const LoginPage = () => {
   return (
     <>
-      {/* Navbar */}
       <Navbar />
 
       <div className="main-content flex-grow">
         <Login />
       </div>
-      
-      {/* Footer */}
+
       <Footer />
     </>
   )
