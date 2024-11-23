@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-500 text-white">
       {/* Primera sección: Íconos sociales y selector de idioma */}
-      <div className="flex justify-between items-center px-20 py-2 text-sm">
+      <div className="flex justify-between items-center px-2 md:px-20 py-2 text-sm">
         {/* Íconos sociales */}
         <div className="flex items-center space-x-4">
           <img src={line} alt="linea-separador" />
@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className="w-full h-[1px] bg-white opacity-20"></div>
 
       {/* Segunda sección: Menú de navegación */}
-      <div className="flex justify-between items-center px-20 py-4">
+      <div className="flex justify-between items-center px-4 md:px-20 py-4">
         {/* Logo */}
         <div className="text-lg font-bold">
           <Link to="/"> {/* Enlace que redirige al home */}
@@ -102,7 +102,7 @@ const Navbar = () => {
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-end md:w-auto">
             {/* Opciones del Menú */}
-            <div className="flex flex-col md:flex-row md:items-center md:gap-6 text-sm font-semibold">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-12 text-sm font-semibold">
               <a
                 href="#vision"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
@@ -121,26 +121,18 @@ const Navbar = () => {
               >
                 {t("blog")}
               </a>
-              <a
-                href="#entrar"
-                className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
-              >
-                {t("login")}
-              </a>
-              <a
-                href="#empezar"
-                className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
-              >
-                {t("getStarted")}
-              </a>
             </div>
 
             {/* Botón Iniciar Sesión */}
-            <div className="ml-6">
-              <button className="bg-white text-[#3a23ff] text-sm font-medium px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 w-full md:w-auto">
+            <div className="ml-10">
+              <Link
+                to="/login"
+                className="bg-white text-[#3a23ff] text-sm font-medium px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 w-full md:w-auto block text-center"
+              >
                 Iniciar Sesión
-              </button>
+              </Link>
             </div>
+
           </div>
         </div>
       </div>

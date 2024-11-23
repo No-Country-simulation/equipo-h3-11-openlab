@@ -14,9 +14,9 @@ const Footer = () => {
 
   return (
     <footer className="w-full bg-white">
-      <div className="max-w-screen-xl mx-auto px-6 py-6 space-y-5">
+      <div className="max-w-screen-xl mx-auto md:px-8 py-6 space-y-5">
         {/* Sección de logo */}
-        <div className="flex justify-start pb-3">
+        <div className="flex justify-center md:justify-start pb-3">
           <Link to="/">
             <img
               src={logo}
@@ -27,9 +27,9 @@ const Footer = () => {
         </div>
 
         {/* Sección de enlaces y redes sociales */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 w-full">
+        <div className="flex flex-row justify-between items-center md:items-start gap-8 md:gap-12 w-full px-4 md:px-0">
           {/* Enlaces */}
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 text-left">
+          <div className="flex flex-row gap-8 md:gap-12 text-left">
             <a
               href="#"
               className="text-sm text-gray-900 font-medium hover:text-blue-600 transition-colors"
@@ -78,21 +78,23 @@ const Footer = () => {
             </a>
           </div>
         </div>
+      </div>
 
-        {/* Línea de separación */}
-        <div className="w-full border-t border-gray-300 pt-6"></div>
+      {/* Línea de separación */}
+      <div className="w-full border-t border-gray-300"></div>
 
-        {/* Sección de términos y derechos */}
-        <div className="flex justify-between items-center w-full pb-4">
+      {/* Sección de términos y derechos */}
+      <div className="max-w-screen-xl mx-auto px-8 py-6 space-y-2">
+        <div className="flex justify-between items-center w-full">
           {/* Privacy Policy */}
           <div
-            className="text-[#1a346b] text-sm cursor-pointer hover:underline"
+            className="text-[#1a346b] text-sm font-medium cursor-pointer hover:underline"
             onClick={toggleModal}
           >
             Privacy Policy
           </div>
           {/* Derechos */}
-          <div className="text-right text-[#1a346b] text-sm">
+          <div className="text-right text-[#1a346b] text-sm font-medium">
             © 2024 Openlab SAS
           </div>
         </div>
@@ -123,6 +125,7 @@ const Footer = () => {
         </div>
       )}
     </footer>
+
   );
 };
 

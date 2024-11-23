@@ -5,14 +5,12 @@ import Footer from '../components/Footer';
 const HomePage = () => {
   return (
     <>
-      {/* Navbar */}
       <Navbar />
 
       <div className="main-content flex-grow">
         <Home />
       </div>
       
-      {/* Footer */}
       <Footer />
     </>
   )
