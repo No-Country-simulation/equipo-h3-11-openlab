@@ -6,6 +6,7 @@ import main from "../assets/icons/mail.png";
 import visibility from "../assets/icons/visibility.png";
 import visibility_off from "../assets/icons/visibility_off.png";
 import lock from "../assets/icons/lock.png";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,8 @@ const Login = () => {
   const [successMessage, setSuccessMessage] = useState(""); 
   const [errorMessage, setErrorMessage] = useState(""); 
   const [showModal, setShowModal] = useState(false); 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const { t } = useTranslation(["translation"]);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevState) => !prevState);
@@ -59,9 +61,9 @@ const Login = () => {
     <div className="w-full flex pt-8 pb-4 md:pb-8 justify-center items-center bg-white relative">
       <div className="w-[350px] px-3 py-4 bg-white flex flex-col justify-start items-end gap-6 rounded-lg">
         <div className="self-stretch flex flex-col gap-3">
-          <h1 className="text-[#1a1a1a] text-3xl font-bold">Iniciar sesión</h1>
+          <h1 className="text-[#1a1a1a] text-3xl font-bold">{t("signIn")}</h1>
           <p className="text-[#1a1a1a] text-xs">
-            Accede a tu cuenta para gestionar tus proyectos y mantenerte al día con tus tareas.
+          {t("loginPage.subtitle")}
           </p>
         </div>
 
@@ -70,7 +72,7 @@ const Login = () => {
             <img src={main} alt="mail-logo" />
             <input
               type="email"
-              placeholder="Correo electrónico"
+              placeholder={t("fields.email")}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -81,7 +83,7 @@ const Login = () => {
             <img src={lock} alt="lock-logo" />
             <input
               type={passwordVisible ? "text" : "password"}
-              placeholder="Contraseña"
+              placeholder={t("fields.password")}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -107,7 +109,7 @@ const Login = () => {
             }}
             className="text-[#3d7bff] text-xs underline"
           >
-            ¿Olvidaste tu contraseña?
+            {t("loginPage.recoverPassword")}
           </a>
         </div>
 
@@ -115,7 +117,7 @@ const Login = () => {
           onClick={handleLogin}
           className="self-stretch h-10 bg-[#3d7bff] rounded-md shadow flex items-center justify-center"
         >
-          <span className="text-white text-sm font-semibold">Iniciar sesión</span>
+          <span className="text-white text-sm font-semibold">{t("signIn")}</span>
         </button>
 
         <div className="self-stretch h-px bg-[#adadad] my-1"></div>
@@ -126,7 +128,7 @@ const Login = () => {
             className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2"
           >
             <img src={googleIcon} alt="Google Icon" className="h-5" />
-            <span className="text-[#1a1a1a] text-xs">Continuar con Google</span>
+            <span className="text-[#1a1a1a] text-xs">{t("loginPage.continueWith")} Google</span>
           </button>
 
           <button
@@ -134,7 +136,7 @@ const Login = () => {
             className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2"
           >
             <img src={facebookIcon} alt="Facebook Icon" className="h-5 pl-2" />
-            <span className="text-[#1a1a1a] text-xs">Continuar con Facebook</span>
+            <span className="text-[#1a1a1a] text-xs">{t("loginPage.continueWith")} Facebook</span>
           </button>
         </div>
 
@@ -147,7 +149,7 @@ const Login = () => {
             }}
             className="text-[#3d7bff] text-sm underline"
           >
-            ¿Aún no tienes cuenta? Crear una ahora
+            {t("loginPage.toSignUp")}
           </a>
         </div>
       </div>
@@ -162,7 +164,7 @@ const Login = () => {
               onClick={closeModal}
               className="mt-4 w-full bg-[#3d7bff] text-white py-2 rounded-md"
             >
-              Cerrar
+              {t("close")}
             </button>
           </div>
         </div>
