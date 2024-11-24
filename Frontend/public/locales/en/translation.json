@@ -12,7 +12,10 @@
     },
     "close": "Close",
     "loginPage": {
-
+        "subtitle": "Access your account to manage your projects and stay on top of your tasks.",
+        "recoverPassword": "Forgot your password?",
+        "toSignUp": "Don't have an account yet? Create one now",
+        "continueWith": "Continue with "
     },
     "register": {
         "title": "Create account",
