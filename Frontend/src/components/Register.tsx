@@ -6,6 +6,7 @@ import mail from "../assets/icons/mail.png";
 import person from "../assets/icons/person.png";
 import { useNavigate } from "react-router-dom";
 import User from "../types/User";
+import { useTranslation } from "react-i18next";
 
 // Modal Component
 interface ModalProps {
@@ -43,6 +44,7 @@ const Register: React.FC = () => {
     termsAccepted: false,
   });
   const navigate = useNavigate();
+  const { t } = useTranslation(["translation"]);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevState) => !prevState);
@@ -141,9 +143,9 @@ const Register: React.FC = () => {
     <div className="w-full flex pt-8 pb-4 md:pb-8 justify-center items-center bg-white">
       <div className="w-[350px] px-4 py-4 bg-white flex flex-col gap-6 rounded-lg">
         <div className="self-stretch flex flex-col gap-3">
-          <h1 className="text-[#1a1a1a] text-3xl font-bold">Crear cuenta</h1>
+          <h1 className="text-[#1a1a1a] text-3xl font-bold">{t("register.title")}</h1>
           <p className="text-[#1a1a1a] text-xs">
-            Crea tu cuenta y empieza a gestionar tus proyectos y mantener todo organizado en un solo lugar.
+            {t("register.subtitle")}
           </p>
         </div>
 
@@ -154,7 +156,7 @@ const Register: React.FC = () => {
             <input
               type="text"
               name="name"
-              placeholder="Nombre y Apellido"
+              placeholder={t("fields.fullname")}
               value={formData.name}
               onChange={handleInputChange}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
@@ -167,7 +169,7 @@ const Register: React.FC = () => {
             <input
               type="email"
               name="email"
-              placeholder="Correo electrónico"
+              placeholder={t("fields.email")}
               value={formData.email}
               onChange={handleInputChange}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
@@ -180,7 +182,7 @@ const Register: React.FC = () => {
             <input
               type={passwordVisible ? "text" : "password"}
               name="password"
-              placeholder="Contraseña"
+              placeholder={t("fields.password")}
               value={formData.password}
               onChange={handleInputChange}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
@@ -203,7 +205,7 @@ const Register: React.FC = () => {
             <input
               type={confirmPasswordVisible ? "text" : "password"}
               name="confirmPassword"
-              placeholder="Repetir contraseña"
+              placeholder={t("fields.confirmPassword")}
               value={formData.confirmPassword}
               onChange={handleInputChange}
               className="w-full text-sm text-[#6e6e6e] outline-none bg-transparent"
@@ -230,7 +232,7 @@ const Register: React.FC = () => {
             checked={formData.termsAccepted}
           />
           <label htmlFor="terms-checkbox" className="text-[#212121] text-[.7rem] ">
-            Al continuar, confirmas tu conformidad con nuestras {" "}
+            {t("terms.useDeclaration")} {" "}
             <button
               type="button"
               onClick={() =>
@@ -240,9 +242,9 @@ const Register: React.FC = () => {
               }
               className="text-[#3d7bff] underline"
             >
-              Condiciones de Uso
+              {t("terms.ofUse")}
             </button>.
-            y que leíste nuestra {" "}
+            {t("terms.privacyDeclaration")} {" "}
             <button
               type="button"
               onClick={() =>
@@ -252,7 +254,7 @@ const Register: React.FC = () => {
               }
               className="text-[#3d7bff] underline"
             >
-              Declaración de Privacidad y Cookies.
+              {t("terms.ofPrivacy")}
             </button>.
           </label>
         </div>
@@ -261,7 +263,7 @@ const Register: React.FC = () => {
           className="self-stretch h-12 bg-[#3d7bff] rounded-md shadow flex items-center justify-center"
           onClick={handleSubmit}
         >
-          <span className="text-white text-sm font-semibold">Crear cuenta</span>
+          <span className="text-white text-sm font-semibold">{t("register.title")}</span>
         </button>
 
         <div className="self-stretch h-px bg-[#adadad] my-0"></div>
@@ -272,7 +274,7 @@ const Register: React.FC = () => {
               onClick={() => navigate("/login")}
               className="text-[#3d7bff] underline"
             >
-              ¿Ya tienes una cuenta? Inicia sesión
+              {t("register.toSignIn")}
             </button>
           </p>
         </div>

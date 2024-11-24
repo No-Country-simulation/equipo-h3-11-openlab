@@ -10,5 +10,25 @@
         "title": "Privacy Policy",
         "content": "This privacy policy describes how we collect, use, and protect the personal information you provide to us when using our website. We are committed to ensuring the security of your data and using your information only for the specified purposes. By using this site, you agree to the terms described in this policy."
     },
-    "close": "Close"
+    "close": "Close",
+    "loginPage": {
+
+    },
+    "register": {
+        "title": "Create account",
+        "subtitle": "Create your account and start managing your projects while keeping everything organized in one place.",
+        "toSignIn": "Already have an account? Sign in"
+    },
+    "fields": {
+        "fullname": "fullname",
+        "email": "email",
+        "password": "password",
+        "confirmPassword": "Confirm password"
+    },
+    "terms": {
+        "ofUse": "Terms of use",
+        "useDeclaration": "By continuing, you confirm your agreement with our ",
+        "ofPrivacy": "Privacy and Cookies Statement.",
+        "privacyDeclaration": "and that you have read our "
+    }
 }
