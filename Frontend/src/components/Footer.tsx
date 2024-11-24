@@ -4,9 +4,11 @@ import logo from "../assets/logo-white.svg";
 import facebook from "../assets/footer/facebook.svg";
 import instagram from "../assets/footer/instagram.svg";
 import twitter from "../assets/footer/twitter.svg";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation(["translation"]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -34,19 +36,19 @@ const Footer = () => {
               href="#"
               className="text-sm text-gray-900 font-medium hover:text-blue-600 transition-colors"
             >
-              Visión
+              {t("vision")}
             </a>
             <a
               href="#"
               className="text-sm text-gray-900 font-medium hover:text-blue-600 transition-colors"
             >
-              Iniciativas
+              {t("initiatives")}
             </a>
             <a
               href="#"
               className="text-sm text-gray-900 font-medium hover:text-blue-600 transition-colors"
             >
-              Blog
+              {t("blog")}
             </a>
           </div>
 
@@ -91,7 +93,7 @@ const Footer = () => {
             className="text-[#1a346b] text-sm font-medium cursor-pointer hover:underline"
             onClick={toggleModal}
           >
-            Privacy Policy
+            {t("privacyPolicy.title")}
           </div>
           {/* Derechos */}
           <div className="text-right text-[#1a346b] text-sm font-medium">
@@ -104,13 +106,9 @@ const Footer = () => {
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-md max-w-lg w-full">
-            <h2 className="text-xl font-bold mb-4">Privacy Policy</h2>
+            <h2 className="text-xl font-bold mb-4">{t("privacyPolicy.title")}</h2>
             <p className="text-gray-700">
-              Esta política de privacidad describe cómo recopilamos, utilizamos y protegemos
-              la información personal que nos proporcionas al utilizar nuestro sitio web.
-              Nos comprometemos a garantizar la seguridad de tus datos y a utilizar tu
-              información únicamente para los fines especificados. Al utilizar este sitio,
-              aceptas los términos descritos en esta política.
+              {t("privacyPolicy.content")}
             </p>
 
             <div className="mt-4 flex justify-end">
@@ -118,7 +116,7 @@ const Footer = () => {
                 onClick={toggleModal}
                 className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
               >
-                Cerrar
+                {t("close")}
               </button>
             </div>
           </div>
