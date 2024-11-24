@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["translation"]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -129,7 +129,7 @@ const Navbar = () => {
                 to="/login"
                 className="bg-white text-[#3a23ff] text-sm font-medium px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 w-full md:w-auto block text-center"
               >
-                Iniciar Sesión
+                {t("signIn")}
               </Link>
             </div>
 
