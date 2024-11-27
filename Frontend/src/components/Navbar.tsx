@@ -38,9 +38,8 @@ const Navbar = () => {
             <FaTwitter />
           </a>
         </div>
-
-       {/* Switch de idioma */}
-       <LanguageSwitch /> {/* Aquí se integra el componente */}
+        {/* Switch de idioma */}
+        <LanguageSwitch /> {/* Aquí se integra el componente */}
       </div>
 
       {/* Línea separadora */}
@@ -50,7 +49,9 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-6 py-4">
         {/* Logo */}
         <div className="text-lg font-bold">
-          <Link to="/"> {/* Enlace que redirige al home */}
+          <Link to="/">
+            {" "}
+            {/* Enlace que redirige al home */}
             <img
               src={logo}
               alt="Logo"
@@ -83,8 +84,9 @@ const Navbar = () => {
 
         {/* Menú de navegación */}
         <div
-          className={`${isMenuOpen ? "block" : "hidden"
-            } absolute top-20 left-0 w-full bg-blue-500 md:static md:block`}
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } absolute top-20 left-0 w-full bg-blue-500 md:static md:block`}
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-end md:w-auto">
             {/* Opciones del Menú */}
