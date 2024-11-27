@@ -1,0 +1,37 @@
+{
+    "welcome": "Bienvenido",
+    "vision": "Visión",
+    "initiatives": "Iniciativas",
+    "blog": "Blog",
+    "login": "Entrar",
+    "getStarted": "Empezar",
+    "signIn": "Iniciar Sesión",
+    "privacyPolicy": {
+        "title": "Política de Privacidad",
+        "content": "Esta política de privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas al utilizar nuestro sitio web. Nos comprometemos a garantizar la seguridad de tus datos y a utilizar tu información únicamente para los fines especificados. Al utilizar este sitio, aceptas los términos descritos en esta política."
+    },
+    "close": "Cerrar",
+    "loginPage": {
+        "subtitle": "Accede a tu cuenta para gestionar tus proyectos y mantenerte al día con tus tareas.",
+        "recoverPassword": "¿Olvidaste tu contraseña?",
+        "toSignUp": "¿Aún no tienes cuenta? Crear una ahora",
+        "continueWith": "Continuar con "
+    },
+    "register": {
+        "title": "Crear cuenta",
+        "subtitle": "Crea tu cuenta y empieza a gestionar tus proyectos y mantener todo organizado en un solo lugar.",
+        "toSignIn": "¿Ya tienes una cuenta? Inicia sesión"
+    },
+    "fields": {
+        "fullname": "Nombre y Apellido",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Repetir contraseña"
+    },
+    "terms": {
+        "ofUse": "Condiciones de Uso",
+        "useDeclaration": "Al continuar, ratificas tu conformidad con nuestras ",
+        "ofPrivacy": "Declaración de Privacidad y Cookies.",
+        "privacyDeclaration": "y que leíste nuestra "
+    }
+}

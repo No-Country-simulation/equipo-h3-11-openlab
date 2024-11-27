@@ -1,52 +1,66 @@
 import { useState } from "react";
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-blue.svg";
+import facebook from "../assets/navbar/facebook.svg";
+import instagram from "../assets/navbar/instagram.svg";
+import twitter from "../assets/navbar/twitter.svg";
+import line from "../assets/navbar/line.png";
 import LanguageSwitch from "./LanguageSwitch";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation(["translation"]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="bg-blue-500 text-white">
       {/* Primera sección: Íconos sociales y selector de idioma */}
-      <div className="flex justify-between items-center px-6 py-2 text-sm">
+      <div className="flex justify-between items-center px-2 md:px-20 py-2 text-sm">
         {/* Íconos sociales */}
-        <div className="flex gap-4">
+        <div className="flex items-center space-x-4">
+          <img src={line} alt="linea-separador" />
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-200"
           >
-            <FaFacebookF />
+            <img src={facebook} alt="facebook-icon" className="h-4 w-4" />
           </a>
+          <img src={line} alt="linea-separador" />
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-200"
           >
-            <FaInstagram />
+            <img src={instagram} alt="instagram-logo" className="h-4 w-4" />
           </a>
+          <img src={line} alt="linea-separador" />
           <a
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-200"
           >
-            <FaTwitter />
+            <img src={twitter} alt="twitter-icon" className="h-4 w-4" />
           </a>
+          <img src={line} alt="linea-separador" />
         </div>
-        {/* Switch de idioma */}
-        <LanguageSwitch /> {/* Aquí se integra el componente */}
+
+        <div className="flex items-center space-x-2">
+          {/* Switch de idioma */}
+          <img src={line} alt="linea-separador" />
+          <LanguageSwitch /> {/* Aquí se integra el componente */}
+          <img src={line} alt="linea-separador" />
+        </div>
       </div>
 
       {/* Línea separadora */}
       <div className="w-full h-[1px] bg-white opacity-20"></div>
 
       {/* Segunda sección: Menú de navegación */}
-      <div className="flex justify-between items-center px-6 py-4">
+      <div className="flex justify-between items-center px-4 md:px-20 py-4">
         {/* Logo */}
         <div className="text-lg font-bold">
           <Link to="/">
@@ -86,48 +100,39 @@ const Navbar = () => {
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } absolute top-20 left-0 w-full bg-blue-500 md:static md:block`}
+          } absolute top-[7rem] left-0 w-full py-6 bg-blue-500 md:static md:block z-10`}
         >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-end md:w-auto">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end md:w-auto">
             {/* Opciones del Menú */}
-            <div className="flex flex-col md:flex-row md:items-center md:gap-6 text-sm font-semibold">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-12 text-sm font-semibold">
               <a
                 href="#vision"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Visión
+                {t("vision")}
               </a>
               <a
                 href="#iniciativas"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Iniciativas
+                {t("initiatives")}
               </a>
               <a
                 href="#blog"
                 className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
               >
-                Blog
-              </a>
-              <a
-                href="#entrar"
-                className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
-              >
-                Entrar
-              </a>
-              <a
-                href="#empezar"
-                className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
-              >
-                Empezar
+                {t("blog")}
               </a>
             </div>
 
             {/* Botón Iniciar Sesión */}
-            <div className="ml-6">
-              <button className="bg-white text-blue-600 px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 w-full md:w-auto">
-                Iniciar Sesión
-              </button>
+            <div className="px-6 md:px-0 md:ml-10">
+              <Link
+                to="/login"
+                className="bg-white text-[#3a23ff] text-sm font-medium px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 w-full md:w-auto block text-center"
+              >
+                {t("signIn")}
+              </Link>
             </div>
           </div>
         </div>

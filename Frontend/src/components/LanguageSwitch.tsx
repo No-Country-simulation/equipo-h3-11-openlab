@@ -1,15 +1,24 @@
 import { useState } from "react";
-import esFlag from "../assets/flag.png";
-import enFlag from "../assets/flag.png";
+import { useTranslation } from "react-i18next";
+import esFlag from "../assets/navbar/es-flag.svg";
+import enFlag from "../assets/navbar/en-flag.svg";
+
+const languages = [
+  {code: "es", lang: "ES"},
+  {code: "en", lang: "EN"}
+]
 
 const LanguageSwitch = () => {
-  const [language, setLanguage] = useState("EN");
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language || "es");
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(event.target.value);
+    const selectedLanguage = event.target.value;
+    setLanguage(selectedLanguage);
+    i18n.changeLanguage(selectedLanguage); // Cambia el idioma en i18next
   };
 
-  const flagSrc = language === "EN" ? enFlag : esFlag;
+  const flagSrc = language === "en" ? enFlag : esFlag;
 
   return (
     <div className="flex items-center gap-2">
@@ -24,10 +33,13 @@ const LanguageSwitch = () => {
       <select
         value={language}
         onChange={handleLanguageChange}
-        className="text-sm bg-blue-500 text-white border border-blue-500 rounded px-2 py-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="text-sm bg-blue-500 text-white border border-blue-500 rounded py-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300"
       >
-        <option value="EN" className="text-black">EN</option>
-        <option value="ES" className="text-black">ES</option>
+        {
+          languages.map((lng) => {
+            return <option value={lng.code} className="text-black">{lng.lang}</option>
+          })
+        }
       </select>
     </div>
   );
