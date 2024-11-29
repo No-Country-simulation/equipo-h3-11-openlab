@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 import logo from "../assets/logo-white.svg"
-import line from "../assets/navbar/line.png"
 import profile from "../assets/react.svg"
+import ConnectWallet from '../components/ConnectWallet'
 
 const Header = () => {
     return (
-        <header>
-            <div className="text-lg font-bold">
+        <header className="flex flex-row justify-between items-center border-2 border-transparent border-b-gray-200 p-4">
+            <div className="flex flex-row text-lg font-bold">
                 <Link to="/">
                     {" "}
                     {/* Enlace que redirige al home */}
@@ -17,10 +17,12 @@ const Header = () => {
                     />
                 </Link>
             </div>
-            <div>
-                <img src={line} alt="linea-separador" />
-                <img src={profile} alt="foto de perfil"/>
-                <span>Favio A.</span>
+            <div className="flex flex-row gap-4">
+                <ConnectWallet/>
+                <div className="flex flex-row border-2 border-transparent border-l-gray-200 p-2 gap-2">
+                    <img src={profile} alt="foto de perfil"/>
+                    <span>Fabio A.</span>
+                </div>
             </div>
         </header>
     )
