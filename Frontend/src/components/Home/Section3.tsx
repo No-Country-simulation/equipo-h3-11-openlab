@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundSvg from '../../assets/home/section3-background.svg';
+import BackgroundSvg from '/assets/home/section3-background.svg';
 import iPhoneX from '../../assets/home/iPhoneX.png';
 import icon1 from '../../assets/home/icon1.png';
 import icon2 from '../../assets/home/icon2.png';

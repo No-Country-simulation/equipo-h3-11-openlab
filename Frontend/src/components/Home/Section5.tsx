@@ -1,4 +1,4 @@
-import fondo from '../../assets/home/section5-fondo4.svg';
+import fondo from '/assets/home/section5-fondo4.svg';
 import icon from '../../assets/home/icon-section5.png';
 
 const Section5 = () => {

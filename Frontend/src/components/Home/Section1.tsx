@@ -1,5 +1,5 @@
 import React from 'react';
-import fondo from '../../assets/home/section1-vector.svg';
+import fondo from '/assets/home/section1-vector.svg';
 import imagen from '../../assets/home/svg2.svg';
 import empezar from '../../assets/home/empezar-buton.svg';
 
