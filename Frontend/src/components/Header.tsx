@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from "../assets/logo-white.svg"
-import profile from "../assets/react.svg"
+import profile from "../assets/default-profile-img.svg"
 import ConnectWallet from '../components/ConnectWallet'
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
             <div className="flex flex-row gap-4">
                 <ConnectWallet/>
                 <div className="flex flex-row border-2 border-transparent border-l-gray-200 p-2 gap-2">
-                    <img src={profile} alt="foto de perfil"/>
+                    <img src={profile} alt="foto de perfil" className="h-10 w-auto object-contain"/>
                     <span>Fabio A.</span>
                 </div>
             </div>
