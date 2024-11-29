@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <footer className="w-full bg-white">
-      <div className="max-w-screen-xl mx-auto md:px-8 py-6 space-y-5">
+      <div className="mx-auto px-2 md:px-20 py-6 space-y-5">
         {/* Sección de logo */}
         <div className="flex justify-center md:justify-start pb-3">
           <Link to="/">
@@ -86,7 +86,7 @@ const Footer = () => {
       <div className="w-full border-t border-gray-300"></div>
 
       {/* Sección de términos y derechos */}
-      <div className="max-w-screen-xl mx-auto px-8 py-6 space-y-2">
+      <div className="mx-auto px-6 md:px-20 py-6 space-y-2">
         <div className="flex justify-between items-center w-full">
           {/* Privacy Policy */}
           <div
