@@ -54,7 +54,6 @@ const Navbar = () => {
           <LanguageSwitch /> {/* Aquí se integra el componente */}
           <img src={line} alt="linea-separador" />
         </div>
-
       </div>
 
       {/* Línea separadora */}
@@ -64,7 +63,9 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-4 md:px-20 py-4">
         {/* Logo */}
         <div className="text-lg font-bold">
-          <Link to="/"> {/* Enlace que redirige al home */}
+          <Link to="/">
+            {" "}
+            {/* Enlace que redirige al home */}
             <img
               src={logo}
               alt="Logo"
@@ -97,8 +98,9 @@ const Navbar = () => {
 
         {/* Menú de navegación */}
         <div
-          className={`${isMenuOpen ? "block" : "hidden"
-            } absolute top-[7rem] left-0 w-full py-6 bg-[#6193FF] md:static md:block z-20`}
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } absolute top-[7rem] left-0 w-full py-6 bg-[#6193FF] md:static md:block z-20`}
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end md:w-auto">
             {/* Opciones del Menú */}
@@ -132,7 +134,6 @@ const Navbar = () => {
                 {t("signIn")}
               </Link>
             </div>
-
           </div>
         </div>
       </div>
