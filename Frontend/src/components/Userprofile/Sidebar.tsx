@@ -35,10 +35,7 @@ export const Sidebar = ({ children }: Props) => {
               overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}
           `}
                 >
-                    <div className="leading-4">
-                        <h4 className="font-semibold">John Doe</h4>
-                        <span className="text-xs text-gray-600">johndoe@gmail.com</span>
-                    </div>
+                   
                     <MoreVertical size={20} />
                 </div>
             </nav>
