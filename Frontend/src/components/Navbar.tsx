@@ -13,7 +13,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-500 text-white">
+    <nav className="bg-[#6193FF] text-white">
       {/* Primera sección: Íconos sociales y selector de idioma */}
       <div className="flex justify-between items-center px-2 md:px-20 py-2 text-sm">
         {/* Íconos sociales */}
@@ -100,7 +100,7 @@ const Navbar = () => {
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } absolute top-[7rem] left-0 w-full py-6 bg-blue-500 md:static md:block z-10`}
+          } absolute top-[7rem] left-0 w-full py-6 bg-[#6193FF] md:static md:block z-20`}
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end md:w-auto">
             {/* Opciones del Menú */}
