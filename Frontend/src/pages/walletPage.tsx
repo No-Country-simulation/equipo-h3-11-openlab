@@ -1,13 +1,13 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import LateralNavbar from '../components/LateralNavbar'
+import Sidebar from '../components/Sidebar'
 
 const WalletPage = () => {
     return (
         <>
             <Header/>
             <div className="main-content flex-grow relative">
-                <LateralNavbar/>
+                <Sidebar/>
             </div>
             <Footer/>
         </>
