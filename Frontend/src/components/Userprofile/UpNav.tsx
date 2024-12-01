@@ -38,7 +38,7 @@ export const UpNav = () => {
                   <img src={walletnav} alt="udp" />
                 </div>
                 <div className=''>
-                  <button className='' >Ethereum</button>
+                  <button className='' >9x...3D8a</button>
                 </div>
                 <div>
                   <img  src={fa} alt="udp" />
