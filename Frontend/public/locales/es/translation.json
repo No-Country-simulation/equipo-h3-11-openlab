@@ -42,5 +42,20 @@
     "walletOptions": {
         "connect": "Conectar Wallet",
         "network": "Seleccionar Red"
+    },
+    "initiativesOptions": {
+        "create": "Crear",
+        "newInitiatives": "Iniciativas nuevas",
+        "all": "Todas",
+        "favorites": "Favoritas",
+        "buy": "Comprar",
+        "join": "Unirse",
+        "name": "Nombre",
+        "priceFluctuation": "Fluctuación de precio",
+        "colaborators": "Colaboradores",
+        "buySellPrice": "Precio compra/venta",
+        "missions": "Misiones",
+        "likes": "Me gusta",
+        "shares": "Compartida"
     }
 }
