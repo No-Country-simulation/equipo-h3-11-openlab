@@ -1,9 +1,9 @@
 import { Sidebar, SidebarItem } from './Sidebar';
-import Home from '../assets/SVG/Home.tsx';
-import Wallet from '../assets/SVG/Wallet.tsx';
-import LampOn from '../assets/SVG/LampOn.tsx';
-import Market from '../assets/SVG/Market.tsx';
-import Settings from '../assets/SVG/Settings.tsx';
+import Home from '../../assets/SVG/Home.tsx';
+import Wallet from '../../assets/SVG/Wallet.tsx';
+import LampOn from '../../assets/SVG/LampOn.tsx';
+import Market from '../../assets/SVG/Market.tsx';
+import Settings from '../../assets/SVG/Settings.tsx';
 
 
 

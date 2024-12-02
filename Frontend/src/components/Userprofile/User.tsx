@@ -1,7 +1,7 @@
-import Favio from '../assets/Favio.png';
-import Line65 from '../assets/line65.png';
+import Favio from '../../assets/default-profile-img.png';
+import Line65 from '../../assets/navbar/line.png';
 
-export const User = () => {
+const User = () => {
     return (
         <div className="flex flex-row  items-center justify-center">
             <div className='flex flex-row items-center'>
@@ -20,3 +20,5 @@ export const User = () => {
         </div>
     )
 }
+
+export default User

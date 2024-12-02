@@ -1,9 +1,9 @@
-import Logo from '../assets/SVG/Logo.tsx';
-import Line from '../assets/line.png';
-import userLogo from '../assets/userLogo.png';
-import usp from '../assets/usp.png';
-import fa from '../assets/fa.png';
-import walletnav from '../assets/walletnavup.png';
+import Logo from '../../assets/SVG/Logo.tsx';
+import Line from '../../assets/navbar/line.png';
+import userLogo from '../../assets/react.svg';
+import usp from '../../assets/usp.png';
+import fa from '../../assets/fa.png';
+import walletnav from '../../assets/walletnavup.png';
 
 export const UpNav = () => {
   return (
