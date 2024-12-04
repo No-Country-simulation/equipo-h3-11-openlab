@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { CirclePlus, Search } from "lucide-react"
+import { CirclePlus } from "lucide-react"
 
 const InitiativesHeader = () => {
     const { t } = useTranslation(["translation"]);
@@ -10,10 +10,6 @@ const InitiativesHeader = () => {
                 <button className="self-stretch h-10 bg-[#3d7bff] rounded-md shadow flex items-center justify-center">
                     <span className="flex flex-row gap-2 px-8 py-2 text-white text-sm font-semibold"><CirclePlus />{t("initiativesOptions.create")}</span>
                 </button>
-            </div>
-            <div className="w-full h-10 px-8">
-                <Search />
-                <input type="text" placeholder={t("search")} className="w-full h-full border border-2 border-gray-200 rounded-xl p-4" />
             </div>
         </header>
     )
