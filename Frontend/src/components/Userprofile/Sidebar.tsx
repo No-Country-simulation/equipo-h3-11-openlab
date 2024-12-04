@@ -1,4 +1,4 @@
-import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
+/* import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
 import { ReactNode } from "react";
 
@@ -89,4 +89,4 @@ export const SidebarItem = ({ icon, text, active, alert }: any) => {
             )}
         </li>
     )
-}
+} */
