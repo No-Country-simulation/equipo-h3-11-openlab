@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import logo from "../assets/logo-white.svg"
-import { Menu } from "lucide-react"
 import profile from "../assets/default-profile-img.png"
 import ConnectWallet from '../components/ConnectWallet'
 
