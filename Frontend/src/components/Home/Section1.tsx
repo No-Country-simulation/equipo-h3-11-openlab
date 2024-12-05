@@ -19,7 +19,7 @@ const Section1: React.FC = () => {
             Ayuda a crear startups de manera colaborativa y conviértete en co-propietario de los proyectos a través de
             tokens enlazados a la propiedad intelectual.
           </p>
-          <button className="flex items-center justify-center gap-2 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
+          <button className="flex items-center justify-center gap-4 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
             <img src={empezar} alt="Ícono de empezar" className="w-6 h-6" />
             Empezar
           </button>
