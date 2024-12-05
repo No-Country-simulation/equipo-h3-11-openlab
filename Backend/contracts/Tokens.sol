@@ -8,6 +8,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 abstract contract BaseToken is ERC20 {
     address public admin;
 
+    
+
     constructor(string memory name, string memory symbol) ERC20(name, symbol) {
         admin = msg.sender;
         _mint(msg.sender, 1000); // Emite tokens iniciales al deployer

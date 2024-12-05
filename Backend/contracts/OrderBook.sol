@@ -31,17 +31,16 @@ contract Orderbook is ReentrancyGuard {
     address private constant BUFFER = address(1);
 
     // Eventos para registrar acciones
-    event BuyOrderPlaced(uint256 indexed price, uint256 quantity, address indexed buyer);
+    event BuyOrderPlaced(uint256 indexed price, uint256 quantity, address indexed buyer, uint256 timestamp);
     event CancelBuyOrder(address indexed buyer);
-    event SellOrderPlaced(uint256 indexed price, uint256 quantity, address indexed seller);
+    event SellOrderPlaced(uint256 indexed price, uint256 quantity, address indexed seller, uint256 timestamp);
     event CancelSellOrder(address indexed seller);
 
     // Constructor para inicializar los tokens y configuraciones iniciales
     constructor(address token1, address token2) {
-    require(token1 != address(0) && token2 != address(0), "Tokens no validos");
-    _token1 = IERC20(token1);
-    _token2 = IERC20(token2);
-
+        require(token1 != address(0) && token2 != address(0), "Tokens no validos");
+        _token1 = IERC20(token1);
+        _token2 = IERC20(token2);
 
         // Configuración inicial de los "buffers"
         _nextBuy[BUFFER] = BUFFER;
@@ -52,6 +51,7 @@ contract Orderbook is ReentrancyGuard {
     function placeBuy(uint256 price, uint256 quantity) external nonReentrant {
         require(price > 0 && quantity > 0, "Precio y cantidad deben ser mayores a cero");
         require(_buyOrders[msg.sender].date == 0, "Primero elimina tu orden existente");
+        require(_token1.balanceOf(msg.sender) >= quantity, "Saldo insuficiente para la compra");
 
         // Crear y agregar la nueva orden al libro
         _buyOrders[msg.sender] = Order(price, quantity, block.timestamp);
@@ -64,7 +64,7 @@ contract Orderbook is ReentrancyGuard {
         _token1.transferFrom(msg.sender, address(this), quantity);
 
         // Emitir evento
-        emit BuyOrderPlaced(price, quantity, msg.sender);
+        emit BuyOrderPlaced(price, quantity, msg.sender, block.timestamp);
     }
 
     // Función para cancelar una orden de compra
@@ -90,6 +90,7 @@ contract Orderbook is ReentrancyGuard {
     function placeSell(uint256 price, uint256 quantity) external nonReentrant {
         require(price > 0 && quantity > 0, "Precio y cantidad deben ser mayores a cero");
         require(_sellOrders[msg.sender].date == 0, "Primero elimina tu orden existente");
+        require(_token2.balanceOf(msg.sender) >= quantity, "Saldo insuficiente para la venta");
 
         // Crear y agregar la nueva orden al libro
         _sellOrders[msg.sender] = Order(price, quantity, block.timestamp);
@@ -102,7 +103,7 @@ contract Orderbook is ReentrancyGuard {
         _token2.transferFrom(msg.sender, address(this), quantity);
 
         // Emitir evento
-        emit SellOrderPlaced(price, quantity, msg.sender);
+        emit SellOrderPlaced(price, quantity, msg.sender, block.timestamp);
     }
 
     // Función para cancelar una orden de venta
@@ -122,6 +123,50 @@ contract Orderbook is ReentrancyGuard {
 
         // Emitir evento
         emit CancelSellOrder(msg.sender);
+    }
+
+    // Función para emparejar y ejecutar las órdenes
+    function matchAndExecuteOrders() public nonReentrant {
+        address buyOrderAddress = _nextBuy[BUFFER];
+        address sellOrderAddress = _nextSell[BUFFER];
+
+        while (buyOrderAddress != BUFFER && sellOrderAddress != BUFFER) {
+            Order memory buyOrder = _buyOrders[buyOrderAddress];
+            Order memory sellOrder = _sellOrders[sellOrderAddress];
+
+            // Verifica si las órdenes pueden emparejarse (precio de compra >= precio de venta)
+            if (buyOrder.price >= sellOrder.price) {
+                uint256 quantityMatched = buyOrder.quantity < sellOrder.quantity ? buyOrder.quantity : sellOrder.quantity;
+
+                // Ejecutar la transacción de compra/venta
+                executeBuyOrder(buyOrderAddress, sellOrderAddress, quantityMatched);
+            }
+
+            // Avanzar a la siguiente orden
+            buyOrderAddress = _nextBuy[buyOrderAddress];
+            sellOrderAddress = _nextSell[sellOrderAddress];
+        }
+    }
+
+    // Función para ejecutar una transacción de compra y venta
+    function executeBuyOrder(address buyer, address seller, uint256 quantity) private {
+        // Actualizar las cantidades de las órdenes
+        _buyOrders[buyer].quantity -= quantity;
+        _sellOrders[seller].quantity -= quantity;
+
+        // Transferir tokens entre el comprador y el vendedor
+        _token1.transfer(seller, quantity);  // Transferir tokens de comprador a vendedor
+        _token2.transfer(buyer, quantity);   // Transferir tokens de vendedor a comprador
+
+        // Si la orden de compra o venta se ha agotado, eliminarla del libro
+        if (_buyOrders[buyer].quantity == 0) {
+            delete _buyOrders[buyer];
+            buyCount--;
+        }
+        if (_sellOrders[seller].quantity == 0) {
+            delete _sellOrders[seller];
+            sellCount--;
+        }
     }
 
     // Función auxiliar para encontrar la posición previa en las órdenes de compra
