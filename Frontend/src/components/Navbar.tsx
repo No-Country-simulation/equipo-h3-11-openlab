@@ -5,12 +5,30 @@ import instagram from "../assets/navbar/instagram.svg";
 import twitter from "../assets/navbar/twitter.svg";
 import line from "../assets/navbar/line.png";
 import LanguageSwitch from "./LanguageSwitch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const { t } = useTranslation(["translation"]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    await loginWithRedirect();
+    console.log("Redirigido para iniciar sesión.");
+  };
+
+  const handleLogout = () => {
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
+
+  const handleProfileRedirect = () => {
+    if (isAuthenticated) {
+      navigate("/userhome");
+    }
+  };
 
   return (
     <nav className="bg-[#6193FF] text-white">
@@ -123,6 +141,20 @@ const Navbar = () => {
               >
                 {t("blog")}
               </a>
+              <button
+                onClick={isAuthenticated ? handleProfileRedirect : handleLogin}
+                className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
+              >
+                {isAuthenticated ? t("profile") : t("login")}
+              </button>
+              {isAuthenticated && (
+                <button
+                  onClick={handleLogout}
+                  className="block px-4 py-2 md:py-0 md:px-0 hover:bg-blue-600 md:hover:bg-transparent"
+                >
+                  {t("logout")}
+                </button>
+              )}
             </div>
 
             {/* Botón Iniciar Sesión */}
