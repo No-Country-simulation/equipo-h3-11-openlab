@@ -7,6 +7,8 @@ import Initiatives from "./pages/Initiatives";
 import WalletPage from "./pages/walletPage";
 import Market from "./pages/Market";
 import Settings from "./pages/Settings";
+import DAOCreationForm from "./components/DAOCreationForm";
+import OrderbookInteraction from "./components/OrderbookInteraction";
 
 function App() {
   return (
