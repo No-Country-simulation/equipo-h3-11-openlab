@@ -4,8 +4,8 @@ import esFlag from "../assets/navbar/es-flag.svg";
 import enFlag from "../assets/navbar/en-flag.svg";
 
 const languages = [
-  {code: "es", lang: "ES"},
-  {code: "en", lang: "EN"}
+  { code: "es", lang: "ES" },
+  { code: "en", lang: "EN" }
 ]
 
 const LanguageSwitch = () => {
@@ -33,11 +33,11 @@ const LanguageSwitch = () => {
       <select
         value={language}
         onChange={handleLanguageChange}
-        className="text-sm bg-blue-500 text-white border border-blue-500 rounded py-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="text-sm bg-[#6193FF] text-white border border-[#6193FF] rounded py-1 px-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#6193FF] appearance-none"
       >
         {
           languages.map((lng) => {
-            return <option value={lng.code} className="text-black">{lng.lang}</option>
+            return <option value={lng.code} className="text-white">{lng.lang}</option>
           })
         }
       </select>
