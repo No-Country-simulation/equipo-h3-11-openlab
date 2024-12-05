@@ -3,6 +3,8 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ConnectWallet from "./components/ConnectWallet";
+import DAOCreationForm from "./components/DAOCreationForm";
+import OrderbookInteraction from "./components/OrderbookInteraction";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/wallet" element={<ConnectWallet />} />
+          <Route path="/crearDAO" element={<DAOCreationForm />} />
+          <Route path="/orderbook" element={<OrderbookInteraction />} />
         </Routes>
       </div>
     </Router>
