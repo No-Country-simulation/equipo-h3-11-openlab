@@ -3,7 +3,7 @@ import Line65 from '../assets/line65.png';
 
 export const User = () => {
     return (
-        <div className="flex flex-row  items-center justify-center">
+        <div className="flex flex-row  items-center justify-center mt-20">
             <div className='flex flex-row items-center'>
                 <img className="w-20 h20 rounded-full" src={Favio} alt="user" />
                 <div className="flex flex-col items-left" >
