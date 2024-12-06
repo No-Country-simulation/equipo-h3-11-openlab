@@ -7,6 +7,7 @@ import Initiatives from "./pages/Initiatives";
 import WalletPage from "./pages/walletPage";
 import Market from "./pages/Market";
 import Settings from "./pages/Settings";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/userhome" element={<UserProfile />} />
+          <Route
+            path="/userhome"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/initiatives" element={<Initiatives />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/market" element={<Market />} />
