@@ -22,12 +22,12 @@ const DataTable = () => {
         {
             accessorKey: "collaborators",
             header: () => <span>{t("initiativesOptions.collaborators")}</span>,
-            cell: info => <span className="bg-sky-200 rounded-3xl py-1 px-6">{info.getValue()}</span>
+            cell: (info: any) => <span className="bg-sky-200 rounded-3xl py-1 px-6">{info.getValue()}</span>
         },
         {
             accessorKey: "marketPrices",
             header: () => <span>{t("initiativesOptions.buySellPrice")}</span>,
-            cell: info => <span className="text-green-600 font-semibold">{info.getValue()}</span>
+            cell: (info: any) => <span className="text-green-600 font-semibold">{info.getValue()}</span>
         },
         {
             accessorKey: "tokens",
