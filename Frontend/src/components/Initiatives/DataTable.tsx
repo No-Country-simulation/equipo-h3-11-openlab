@@ -1,48 +1,77 @@
 import { useState } from "react"
 import { Heart, Share2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import { flexRender, getCoreRowModel, useReactTable, getPaginationRowModel } from "@tanstack/react-table"
+import { FilterFn, flexRender, getCoreRowModel, useReactTable, getPaginationRowModel, getFilteredRowModel } from "@tanstack/react-table"
+import { RankingInfo, rankItem, compareItems } from "@tanstack/match-sorter-utils"
 import classNames from "classnames"
+import SearchBar from "../SearchBar"
+import InitiativesFilters from "./Filters"
 import dataExample from "../../data/ExampleData.json"
 
+declare module '@tanstack/react-table' {
+    //add fuzzy filter to the filterFns
+    interface FilterFns {
+      fuzzy: FilterFn<unknown>
+    }
+    interface FilterMeta {
+      itemRank: RankingInfo
+    }
+  }
+
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+    const itemRank = rankItem(row.getValue(columnId), value)
+
+    addMeta({itemRank})
+
+    return itemRank.passed
+}
 
 const DataTable = () => {
     const { t } = useTranslation(["translation"]);
     const [data, setData] = useState(dataExample)
+    const [globalFilter, setGlobalFilter] = useState("")
 
     const columns = [
         {
             accessorKey: "name",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.name")}</span>
         },
         {
             accessorKey: "priceFluctation",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.priceFluctuation")}</span>
         },
         {
             accessorKey: "collaborators",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.collaborators")}</span>,
             cell: (info: any) => <span className="bg-sky-200 rounded-3xl py-1 px-6">{info.getValue()}</span>
         },
         {
             accessorKey: "marketPrices",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.buySellPrice")}</span>,
             cell: (info: any) => <span className="text-green-600 font-semibold">{info.getValue()}</span>
         },
         {
             accessorKey: "tokens",
+            filterFn: 'fuzzy',
             header: () => <span>Tokens</span>
         },
         {
             accessorKey: "missions",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.missions")}</span>
         },
         {
             accessorKey: "likes",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.likes")}</span>
         },
         {
             accessorKey: "shares",
+            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.shares")}</span>
         }
     ]
@@ -50,12 +79,23 @@ const DataTable = () => {
     const table = useReactTable({
         data,
         columns,
+        state: {
+            globalFilter
+        },
+        onGlobalFilterChange: setGlobalFilter,
         getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel()
+        getPaginationRowModel: getPaginationRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        globalFilterFn: fuzzyFilter
     })
 
     return (
         <>
+        <SearchBar
+            onChange={(value: any) => setGlobalFilter(String(value))} 
+            value={globalFilter ?? ""}
+        />
+        <InitiativesFilters />
         <table className="table-fixed w-full bg-white border-collapse">
             <thead>
                 {table.getHeaderGroups().map(headerGroup => (
@@ -130,8 +170,8 @@ const DataTable = () => {
                 </button>
             </div>
             <div className="text-gray-600 font-semibold">
-                Mostrando de {Number(table.getRowModel().rows[0].id) + 1}&nbsp;
-                a {Number(table.getRowModel().rows[table.getRowModel().rows.length - 1].id) + 1}&nbsp;
+                Mostrando de {Number(table.getRowModel().rows[0]?.id) + 1}&nbsp;
+                a {Number(table.getRowModel().rows[table.getRowModel().rows.length - 1]?.id) + 1}&nbsp;
                 del total de {dataExample.length} registros 
             </div>
             <select
