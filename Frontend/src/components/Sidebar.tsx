@@ -6,7 +6,7 @@ import { House, Lightbulb, Wallet, CircleDollarSign, Settings, LogOut } from "lu
 const Sidebar = () => {
     const { t } = useTranslation(["translation"])
     return (
-        <nav className="absolute top-0 left-0 w-1/12 h-full p-2 border-2 border-transparent border-r-gray-200">
+        <nav className="absolute top-0 left-0 w-1/6 h-full p-2 border-2 border-transparent border-r-gray-200">
             <div className="flex flex-col gap-4 w-full p-2">
                 <div className="flex w-full">
                     <NavLink className={({ isActive }) => isActive ? "flex flex-row gap-2 font-bold text-blue-500 bg-blue-200 rounded-md w-full p-2" : "flex flex-row gap-2 w-full p-2"} to="/userhome"><House /><span>{t("home")}</span></NavLink>

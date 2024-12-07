@@ -12,6 +12,7 @@
     "market": "Mercado",
     "settings": "Ajustes",
     "logout": "Salir",
+    "search": "Buscar",
     "privacyPolicy": {
         "title": "Política de Privacidad",
         "content": "Esta política de privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas al utilizar nuestro sitio web. Nos comprometemos a garantizar la seguridad de tus datos y a utilizar tu información únicamente para los fines especificados. Al utilizar este sitio, aceptas los términos descritos en esta política."
@@ -42,5 +43,25 @@
     "walletOptions": {
         "connect": "Conectar Wallet",
         "network": "Seleccionar Red"
+    },
+    "initiativesOptions": {
+        "create": "Crear",
+        "newInitiatives": "Iniciativas nuevas",
+        "all": "Todas",
+        "favorites": "Favoritas",
+        "buy": "Comprar",
+        "join": "Unirse",
+        "name": "Nombre",
+        "priceFluctuation": "Fluctuación de precio",
+        "collaborators": "Colaboradores",
+        "buySellPrice": "Precio compra/venta",
+        "missions": "Misiones",
+        "likes": "Me gusta",
+        "shares": "Compartida",
+        "actions": "Acciones",
+        "rows": "filas",
+        "showing": "Mostrando ",
+        "to": "a ",
+        "ofTotal": "del total de "
     }
 }
