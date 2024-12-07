@@ -57,6 +57,11 @@
         "buySellPrice": "Precio compra/venta",
         "missions": "Misiones",
         "likes": "Me gusta",
-        "shares": "Compartida"
+        "shares": "Compartida",
+        "actions": "Acciones",
+        "rows": "filas",
+        "showing": "Mostrando ",
+        "to": "a ",
+        "ofTotal": "del total de "
     }
 }

@@ -57,6 +57,11 @@
         "buySellPrice": "Buy/Sell Price",
         "missions": "Missions",
         "likes": "Likes",
-        "shares": "Shares"
+        "shares": "Shares",
+        "actions": "Actions",
+        "rows": "rows",
+        "showing": "Mostrando ",
+        "to": "a ",
+        "ofTotal": "del total de "
     }
 }
