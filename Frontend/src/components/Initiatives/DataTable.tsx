@@ -29,49 +29,41 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
 const DataTable = () => {
     const { t } = useTranslation(["translation"]);
     const [data, setData] = useState(dataExample)
-    const [globalFilter, setGlobalFilter] = useState("")
+    const [searchFilter, setSearchFilter] = useState("")
 
     const columns = [
         {
             accessorKey: "name",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.name")}</span>
         },
         {
             accessorKey: "priceFluctation",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.priceFluctuation")}</span>
         },
         {
             accessorKey: "collaborators",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.collaborators")}</span>,
             cell: (info: any) => <span className="bg-sky-200 rounded-3xl py-1 px-6">{info.getValue()}</span>
         },
         {
             accessorKey: "marketPrices",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.buySellPrice")}</span>,
             cell: (info: any) => <span className="text-green-600 font-semibold">{info.getValue()}</span>
         },
         {
             accessorKey: "tokens",
-            filterFn: 'fuzzy',
             header: () => <span>Tokens</span>
         },
         {
             accessorKey: "missions",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.missions")}</span>
         },
         {
             accessorKey: "likes",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.likes")}</span>
         },
         {
             accessorKey: "shares",
-            filterFn: 'fuzzy',
             header: () => <span>{t("initiativesOptions.shares")}</span>
         }
     ]
@@ -80,9 +72,8 @@ const DataTable = () => {
         data,
         columns,
         state: {
-            globalFilter
+            searchFilter
         },
-        onGlobalFilterChange: setGlobalFilter,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
@@ -92,8 +83,8 @@ const DataTable = () => {
     return (
         <>
         <SearchBar
-            onChange={(value: any) => setGlobalFilter(String(value))} 
-            value={globalFilter ?? ""}
+            onChange={(value: any) => setSearchFilter(String(value))} 
+            value={searchFilter ?? ""}
         />
         <InitiativesFilters />
         <table className="table-fixed w-full bg-white border-collapse">
