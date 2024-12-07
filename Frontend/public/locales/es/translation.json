@@ -63,5 +63,14 @@
         "showing": "Mostrando ",
         "to": "a ",
         "ofTotal": "del total de "
+    },
+    "marketOptions": {
+        "pageTitle": "Órdenes de Compra y Venta",
+        "openOrders": "Órdenes Abiertas",
+        "orderHistory": "Historial de Órdenes",
+        "type": "Tipo",
+        "side": "Lado",
+        "price": "Precio",
+        "status": "Estado"
     }
 }

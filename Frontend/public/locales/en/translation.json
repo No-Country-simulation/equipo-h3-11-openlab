@@ -41,8 +41,8 @@
         "privacyDeclaration": "and that you have read our "
     },
     "walletOptions": {
-        "connect": "Conectar Wallet",
-        "network": "Seleccionar Red"
+        "connect": "Connect Wallet",
+        "network": "Select Network"
     },
     "initiativesOptions": {
         "create": "Create",
@@ -60,8 +60,17 @@
         "shares": "Shares",
         "actions": "Actions",
         "rows": "rows",
-        "showing": "Mostrando ",
-        "to": "a ",
-        "ofTotal": "del total de "
+        "showing": "Showing ",
+        "to": "to ",
+        "ofTotal": "of total the "
+    },
+    "marketOptions": {
+        "pageTitle": "Purchase and Sale Orders",
+        "openOrders": "Open Orders",
+        "orderHistory": "Order History",
+        "type": "Type",
+        "side": "Side",
+        "price": "Price",
+        "status": "Status"
     }
 }
