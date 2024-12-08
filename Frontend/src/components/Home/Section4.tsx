@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import nosotros from '../../assets/home/nosotros.png';
 import nuestra from '../../assets/home/nuestra-mision.png';
+//import { useTranslation } from "react-i18next"
 
 const Section4 = () => {
+  //const { t } = useTranslation(["translation"]);
   const cards = [
     {
       title: "Nosotros",

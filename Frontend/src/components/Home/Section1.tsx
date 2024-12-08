@@ -2,8 +2,10 @@ import React from 'react';
 import fondo from '/assets/home/section1-vector.svg';
 import imagen from '../../assets/home/svg2.svg';
 import empezar from '../../assets/home/empezar-buton.svg';
+import { useTranslation } from "react-i18next"
 
 const Section1: React.FC = () => {
+  const { t } = useTranslation(["translation"]);
   return (
     <section
       className="w-full bg-bottom bg-no-repeat bg-cover"
@@ -13,15 +15,14 @@ const Section1: React.FC = () => {
         {/* Columna izquierda */}
         <div className="md:w-1/2 space-y-10 md:px-14">
           <h1 className="text-white text-3xl md:text-5xl font-semibold pt-20">
-            Bienvenido al futuro de la innovación
+            {t("homeTexts.welcomeMsg")}
           </h1>
           <p className="text-white text-lg font-medium">
-            Ayuda a crear startups de manera colaborativa y conviértete en co-propietario de los proyectos a través de
-            tokens enlazados a la propiedad intelectual.
+            {t("homeTexts.introMsg")}
           </p>
           <button className="flex items-center justify-center gap-2 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
             <img src={empezar} alt="Ícono de empezar" className="w-6 h-6" />
-            Empezar
+            {t("getStarted")}
           </button>
         </div>
 

@@ -1,7 +1,9 @@
 import fondo from '/assets/home/section5-fondo4.svg';
 import icon from '../../assets/home/icon-section5.png';
+import { useTranslation } from "react-i18next"
 
 const Section5 = () => {
+  const { t } = useTranslation(["translation"]);
   return (
     <div
       className="flex flex-col items-center justify-center w-full bg-cover bg-no-repeat bg-center py-20"
@@ -11,7 +13,7 @@ const Section5 = () => {
     >
       {/* Título */}
       <div className="w-[782px] text-center text-white text-[40px] font-semibold">
-        No es tiempo de aprender a jugar el juego, sino de cambiar sus reglas
+        {t("homeTexts.section5Title")}
       </div>
 
       {/* Espaciado */}
@@ -19,7 +21,7 @@ const Section5 = () => {
 
       {/* Descripción */}
       <div className="w-[868px] text-center text-white text-lg font-normal">
-        Creemos que la única manera de cambiar realmente a la sociedad, es a través de la democratización del acceso a una educación práctica en la que se le permita a cualquier persona de cualquier parte del mundo, contribuir a crear los proyectos y tecnologías que determinarán el curso de la civilización.
+        {t("homeTexts.section5Description")}
       </div>
 
       {/* Espaciado */}
@@ -33,7 +35,7 @@ const Section5 = () => {
           alt="icono"
           className="w-5 h-5 transition-all duration-300 ease-in-out transform hover:scale-110"
         />
-        Más información
+        {t("homeTexts.more")}
       </button>
 
     </div>

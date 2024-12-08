@@ -1,17 +1,19 @@
 import React from 'react';
+import { useTranslation } from "react-i18next"
 
 const Section2: React.FC = () => {
+  const { t } = useTranslation(["translation"]);
   return (
     <section className="flex flex-col items-center justify-center space-y-12 px-6 py-16 bg-white">
       {/* Título */}
       <h2 className="text-[#1a1a1a] text-4xl md:text-5xl font-semibold text-center">
-        ¡Comienza ahora!
+        {t("homeTexts.startNow")}
       </h2>
 
       {/* Descripción */}
       <p className="text-[#1a1a1a] text-lg font-normal text-center w-full max-w-2xl">
-        Ayuda a diseñar, construir y promover a las startups del futuro: <br />
-        abiertas, descentralizadas y transparentes.
+        {t("homeTexts.subtitle1")} <br />
+        {t("homeTexts.subtitle2")}
       </p>
 
       {/* Contenedor de las Cards con Líneas */}

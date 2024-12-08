@@ -6,8 +6,10 @@ import icon2 from '../../assets/home/icon2.png';
 import icon3 from '../../assets/home/icon3.png';
 import icon4 from '../../assets/home/icon4.png';
 import icon5 from '../../assets/home/icon5.png';
+import { useTranslation } from "react-i18next"
 
 const Section3: React.FC = () => {
+  const { t } = useTranslation(["translation"]);
   const benefits = [
     {
       icon: icon1,
@@ -45,7 +47,7 @@ const Section3: React.FC = () => {
         {/* Columna Izquierda */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
           <div className="text-[#1a1a1a] text-5xl font-semibold">
-            Beneficios
+            {t("homeTexts.benefits")}
           </div>
           <div className="space-y-4">
             {benefits.map((benefit, index) => (
