@@ -4,11 +4,11 @@ import { flexRender, getCoreRowModel, useReactTable, getPaginationRowModel } fro
 //import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils"
 import classNames from "classnames"
 import { EllipsisVertical, Rewind, FastForward, StepBack, StepForward } from 'lucide-react'
-import { exampleOrders } from "../../data/exampleOrders"
+import { exampleOrders } from "../../data/exampleOrders.ts"
 import tokenImg from "../../assets/token-img.jpeg";
 
 
-const DataTable = () => {
+function DataTable() {
     const { t } = useTranslation(["translation"]);
     const [data, setData] = useState(exampleOrders)
 
@@ -104,18 +104,26 @@ const DataTable = () => {
                 ))}
             </thead>
             <tbody>
-                {table.getRowModel().rows.map(row => (
-                    <tr key={row.id} className="border-b border-gray-300">
-                        {row.getVisibleCells().map(cell => (
-                            <td key={cell.id} className="py-4 px-8">
-                                {flexRender(
-                                    cell.column.columnDef.cell,
-                                    cell.getContext()
-                                )}
-                            </td>
-                        ))}
+                {table.getRowModel().rows?.length ? (
+                    table.getRowModel().rows.map(row => (
+                        <tr key={row.id} className="border-b border-gray-300">
+                            {row.getVisibleCells().map(cell => (
+                                <td key={cell.id} className="py-4 px-8">
+                                    {flexRender(
+                                        cell.column.columnDef.cell,
+                                        cell.getContext()
+                                    )}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                ) : (
+                    <tr>
+                        <td className="h-24 text-center">
+                            No results.
+                        </td>
                     </tr>
-                ))}
+                )}
             </tbody>
         </table>
         <div className="mt-4 flex items-center justify-between">
