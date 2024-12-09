@@ -34,7 +34,7 @@ const Login = () => {
       setShowModal(true); 
       setTimeout(() => {
         setShowModal(false);
-        navigate("/"); 
+        navigate("/userhome"); 
       }, 2000);
     } else {
       setErrorMessage("Correo electrónico o contraseña incorrectos.");

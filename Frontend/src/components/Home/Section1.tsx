@@ -9,10 +9,10 @@ const Section1: React.FC = () => {
       className="w-full bg-bottom bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${fondo})` }}
     >
-      <div className="relative flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between h-full px-6 md:px-16 lg:px-24 text-center lg:text-left">
+      <div className="relative flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between h-full px-6 md:px-16 lg:px-24 text-left">
         {/* Columna izquierda */}
-        <div className="md:w-1/2 space-y-10 md:px-14">
-          <h1 className="text-white text-3xl md:text-5xl font-semibold pt-20">
+        <div className="md:w-1/2 space-y-6 md:space-y-10 md:px-14">
+          <h1 className="text-white text-3xl md:text-5xl font-semibold pt-12 md:pt-20">
             Bienvenido al futuro de la innovación
           </h1>
           <p className="text-white text-lg font-medium">
