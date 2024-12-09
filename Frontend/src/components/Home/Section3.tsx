@@ -49,7 +49,7 @@ const Section3: React.FC = () => {
           <div className="text-[#1a1a1a] text-5xl font-semibold">
             {t("homeTexts.benefits")}
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {benefits.map((benefit, index) => (
               <div
                 key={index}

@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import User from '../components/Userprofile/User';
+import { EstimBalance } from "../components/Userprofile/EstimBalance";
+import { CuadroBit } from "../components/Userprofile/CuadroBit";
 
 interface UserData {
   token: string;
@@ -40,12 +42,20 @@ const UserProfile = () => {
     <>
       <Header />
       <div className="main-content flex-grow relative bg-slate-50">
-        <Sidebar />
-        <User
-          token={userData?.token || ""} // El token ahora está tipado correctamente
-          userName={user?.name || "Nombre no disponible"}
-          userEmail={user?.email || "Correo no disponible"}
-        />
+        <div className="flex flex-row space-x-8">
+          <div className="basis-1/6">
+            <Sidebar />
+          </div>
+          <div className="basis-5/6">
+            <User
+              token={userData?.token || ""} // El token ahora está tipado correctamente
+              userName={user?.name || "Nombre no disponible"}
+              userEmail={user?.email || "Correo no disponible"}
+            />
+            <EstimBalance />
+            <CuadroBit />
+          </div>
+        </div>
       </div>
       <Footer />
     </>

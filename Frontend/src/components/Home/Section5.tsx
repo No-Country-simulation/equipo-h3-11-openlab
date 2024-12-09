@@ -6,7 +6,7 @@ const Section5 = () => {
   const { t } = useTranslation(["translation"]);
   return (
     <div
-      className="flex flex-col items-center justify-center w-full bg-no-repeat bg-center"
+      className="flex flex-col items-center justify-center p-4 w-full bg-no-repeat bg-center"
       style={{
         backgroundImage: `url(${fondo})`,
         backgroundPosition: 'center',
