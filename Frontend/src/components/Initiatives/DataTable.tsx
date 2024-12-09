@@ -6,7 +6,7 @@ import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils"
 import classNames from "classnames"
 import SearchBar from "../SearchBar"
 import InitiativesFilters from "./Filters"
-import dataExample from "../../data/ExampleData.json"
+import { exampleData } from "../../data/exampleData.ts"
 import fluctuation from "../../assets/price-fluctuation.png";
 
 declare module '@tanstack/react-table' {
@@ -29,7 +29,7 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
 
 const DataTable = () => {
     const { t } = useTranslation(["translation"]);
-    const [data, setData] = useState(dataExample)
+    const [data, setData] = useState(exampleData)
     const [searchFilter, setSearchFilter] = useState("")
     console.log(searchFilter);
     
@@ -79,7 +79,7 @@ const DataTable = () => {
         {
             accessorKey: "actions",
             header: () => <span>{t("initiativesOptions.actions")}</span>,
-            cell: (info: any) => {
+            cell: () => {
                 return (
                     <div className="flex flex-row no-wrap space-x-2">
                         <button className="bg-blue-500 rounded-xl text-white px-1 py-2 font-semibold">{t("initiativesOptions.buy")}</button>
