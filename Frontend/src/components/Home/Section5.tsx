@@ -6,9 +6,11 @@ const Section5 = () => {
   const { t } = useTranslation(["translation"]);
   return (
     <div
-      className="flex flex-col items-center justify-center w-full bg-cover bg-no-repeat bg-center py-20"
+      className="flex flex-col items-center justify-center w-full bg-no-repeat bg-center"
       style={{
         backgroundImage: `url(${fondo})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover', // Asegura que el fondo se adapte al tamaño del contenedor
       }}
     >
       {/* Título */}

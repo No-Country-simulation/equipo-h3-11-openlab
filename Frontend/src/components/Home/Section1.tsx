@@ -11,7 +11,7 @@ const Section1: React.FC = () => {
       className="w-full bg-bottom bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${fondo})` }}
     >
-      <div className="relative flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between h-full px-6 md:px-16 lg:px-24 text-center lg:text-left">
+      <div className="relative flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between h-full px-6 md:px-16 lg:px-24 text-left">
         {/* Columna izquierda */}
         <div className="md:w-1/2 space-y-10 md:px-14">
           <h1 className="text-white text-3xl md:text-5xl font-semibold pt-20">
@@ -20,7 +20,7 @@ const Section1: React.FC = () => {
           <p className="text-white text-lg font-medium">
             {t("homeTexts.introMsg")}
           </p>
-          <button className="flex items-center justify-center gap-2 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
+          <button className="flex items-center justify-center gap-4 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
             <img src={empezar} alt="Ícono de empezar" className="w-6 h-6" />
             {t("getStarted")}
           </button>

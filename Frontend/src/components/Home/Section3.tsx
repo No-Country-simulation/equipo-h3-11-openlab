@@ -40,10 +40,10 @@ const Section3: React.FC = () => {
 
   return (
     <section
-      className="w-full h-screen bg-center bg-cover bg-no-repeat"
+      className="w-full h-[80rem] md:h-[55rem] bg-center bg-cover bg-no-repeat pt-44 md:pt-8"
       style={{ backgroundImage: `url(${BackgroundSvg})` }}
     >
-      <div className="relative flex flex-wrap w-full max-w-6xl px-24 py-16 mx-auto">
+      <div className="relative flex flex-wrap w-full max-w-6xl px-12 md:px-32 py-20 mx-auto">
         {/* Columna Izquierda */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
           <div className="text-[#1a1a1a] text-5xl font-semibold">
@@ -51,17 +51,23 @@ const Section3: React.FC = () => {
           </div>
           <div className="space-y-4">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start space-x-4">
+              <div
+                key={index}
+                className="flex items-center space-x-6"
+              >
+                {/* Ícono */}
                 <img
                   src={benefit.icon}
                   alt={benefit.title}
-                  className="w-7 h-7"
+                  className="w-8 h-8"
                 />
-                <div>
-                  <div className="text-[#1a1a1a] text-lg font-semibold">
+
+                {/* Contenido */}
+                <div className="flex flex-col">
+                  <div className="text-[#1a1a1a] text-lg font-bold pb-2">
                     {benefit.title}
                   </div>
-                  <div className="text-[#1a1a1a] text-md font-normal">
+                  <div className="text-[#1a1a1a] text-md leading-snug max-w-[18rem]">
                     {benefit.description}
                   </div>
                 </div>
@@ -69,12 +75,13 @@ const Section3: React.FC = () => {
             ))}
           </div>
         </div>
+
         {/* Columna Derecha */}
         <div className="w-full lg:w-1/2 flex items-center justify-center">
           <img
             src={iPhoneX}
             alt="iPhone"
-            className="max-w-full max-h-[30rem] object-contain"
+            className="max-w-full max-h-[38rem] object-contain"
           />
         </div>
       </div>
