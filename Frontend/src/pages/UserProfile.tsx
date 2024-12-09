@@ -1,3 +1,4 @@
+import { CuadroBit } from '../components/CuadroBit.tsx';
 import { EstimBalance } from '../components/EstimBalance.tsx';
 import SideItems from '../components/SideItemsUs.tsx';
 import { UpNav } from '../components/UpNav.tsx';
@@ -9,13 +10,14 @@ export const UserPerfil = () => {
   return (
     <div>
       <UpNav />
-      <div className="grid flow-col grid grid-cols-4 gap-1 w-full ">
-        <div className='minmax(200px,_1fr)'>
+      <div className="flex flex-wrap p-3">
+        <div className='order-1 p-1'>
           <SideItems />
         </div>
-        <div className="col-span-3 w-full">
+        <div className="order-2 ml-4">
           <User />
           <EstimBalance />
+          <CuadroBit />
         </div>
       </div>
     </div>
