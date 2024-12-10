@@ -1,0 +1,109 @@
+{
+    "welcome": "Bienvenido",
+    "vision": "Visión",
+    "initiatives": "Iniciativas",
+    "blog": "Blog",
+    "login": "Entrar",
+    "getStarted": "Empezar",
+    "signIn": "Iniciar Sesión",
+    "close": "Cerrar",
+    "home": "Inicio",
+    "wallet": "Billetera",
+    "market": "Mercado",
+    "settings": "Ajustes",
+    "logout": "Salir",
+    "search": "Buscar",
+    "privacyPolicy": {
+        "title": "Política de Privacidad",
+        "content": "Esta política de privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas al utilizar nuestro sitio web. Nos comprometemos a garantizar la seguridad de tus datos y a utilizar tu información únicamente para los fines especificados. Al utilizar este sitio, aceptas los términos descritos en esta política."
+    },
+    "loginPage": {
+        "subtitle": "Accede a tu cuenta para gestionar tus proyectos y mantenerte al día con tus tareas.",
+        "recoverPassword": "¿Olvidaste tu contraseña?",
+        "toSignUp": "¿Aún no tienes cuenta? Crear una ahora",
+        "continueWith": "Continuar con "
+    },
+    "register": {
+        "title": "Crear cuenta",
+        "subtitle": "Crea tu cuenta y empieza a gestionar tus proyectos y mantener todo organizado en un solo lugar.",
+        "toSignIn": "¿Ya tienes una cuenta? Inicia sesión"
+    },
+    "fields": {
+        "fullname": "Nombre y Apellido",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Repetir contraseña"
+    },
+    "terms": {
+        "ofUse": "Condiciones de Uso",
+        "useDeclaration": "Al continuar, ratificas tu conformidad con nuestras ",
+        "ofPrivacy": "Declaración de Privacidad y Cookies.",
+        "privacyDeclaration": "y que leíste nuestra "
+    },
+    "walletOptions": {
+        "connect": "Conectar Wallet",
+        "network": "Seleccionar Red"
+    },
+    "initiativesOptions": {
+        "create": "Crear",
+        "newInitiatives": "Iniciativas nuevas",
+        "all": "Todas",
+        "favorites": "Favoritas",
+        "buy": "Comprar",
+        "join": "Unirse",
+        "name": "Nombre",
+        "priceFluctuation": "Fluctuación de precio",
+        "collaborators": "Colaboradores",
+        "buySellPrice": "Precio compra/venta",
+        "missions": "Misiones",
+        "likes": "Me gusta",
+        "shares": "Compartida",
+        "actions": "Acciones",
+        "rows": "filas",
+        "showing": "Mostrando ",
+        "to": "a ",
+        "ofTotal": "del total de "
+    },
+    "marketOptions": {
+        "pageTitle": "Órdenes de Compra y Venta",
+        "openOrders": "Órdenes Abiertas",
+        "orderHistory": "Historial de Órdenes",
+        "type": "Tipo",
+        "side": "Lado",
+        "price": "Precio",
+        "status": "Estado"
+    },
+    "homeTexts": {
+        "welcomeMsg": "Bienvenido al futuro de la innovación",
+        "introMsg": "Ayuda a crear startups de manera colaborativa y conviértete en co-propietario de los proyectos a través de tokens enlazados a la propiedad intelectual.",
+        "startNow": "¡Comienza ahora!",
+        "subtitle1": "Ayuda a diseñar, construir y promover a las startups del futuro:",
+        "subtitle2": "abiertas, descentralizadas y transparentes",
+        "card1Title": "Inscríbete",
+        "card1Description": "Da clic a empezar y regístrate con tu cuenta de Google, Facebook o correo electrónico.",
+        "card2Title": "Explora las iniciativas",
+        "card2Description": "Examine la sección de iniciativas.",
+        "card3Title": "Únete",
+        "card3Description": "Únete a alguna iniciativa que se alinee con tus intereses y habilidades.",
+        "card4Title": "Recibe invitación",
+        "card4Description": "Recibe una invitación a la plataforma de colaboración para proponer ideas, cumplir misiones y ganar tokens.",
+        "benefits": "Beneficios",
+        "benefit1Title": "Emprender",
+        "benefit1Description": "Conviértete en emprendedor con tu talento especializado",
+        "benefit2Title": "Libertad",
+        "benefit2Description": "Trabaja en lo que amas bajo tus propias reglas",
+        "benefit3Title": "Inclusión",
+        "benefit3Description": "Verdadera inclusión financiera como co-propietario",
+        "benefit4Title": "Token",
+        "benefit4Description": "Token Diversificados Operan como un fondo de inversión",
+        "benefit5Title": "Aprendizaje",
+        "benefit5Description": "Aprende creando proyectos reales, en entornos reales",
+        "aboutTitle": "Nosotros",
+        "aboutDescription": "Nosotros somos los visionarios locos, los rebeldes, los innovadores, los que no se conforman con el mundo como es. Pensadores revolucionarios que creen en un solo movimiento para todos, en un mundo sin fronteras. \n\nSabemos que la libertad no es algo con lo que se nace, sino algo por lo que tienes que luchar. Abogamos por un movimiento que represente los intereses y el bienestar de la sociedad. Creemos que es tiempo de cambiar las reglas de juego, no de aprender a jugarlo.",
+        "missionTitle": "Nuestra Misión",
+        "missionDescription": "Acelerar la innovación al tiempo que democratizamos el acceso a la educación y el trabajo, permitiendo a la humanidad operar como una sola organización sin límites imaginados.",
+        "section5Title": "Es tiempo de cambiar las reglas de juego, no de aprender a jugarlo",
+        "section5Description": "Creemos que la única manera de cambiar realmente a la sociedad, es a través de la democratización del acceso a una educación práctica en la que se le permita a cualquier persona de cualquier parte del mundo, contribuir a crear los proyectos y tecnologías que determinarán el curso de la civilización.",
+        "more": "Más información"
+    }
+}

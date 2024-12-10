@@ -1,0 +1,109 @@
+{
+    "welcome": "Welcome",
+    "vision": "Vision",
+    "initiatives": "Initiatives",
+    "blog": "Blog",
+    "login": "Login",
+    "getStarted": "Get Started",
+    "signIn": "Sign In",
+    "close": "Close",
+    "home": "Home",
+    "wallet": "Wallet",
+    "market": "Market",
+    "settings": "Settings",
+    "logout": "Log out",
+    "search": "Search",
+    "privacyPolicy": {
+        "title": "Privacy Policy",
+        "content": "This privacy policy describes how we collect, use, and protect the personal information you provide to us when using our website. We are committed to ensuring the security of your data and using your information only for the specified purposes. By using this site, you agree to the terms described in this policy."
+    },
+    "loginPage": {
+        "subtitle": "Access your account to manage your projects and stay on top of your tasks.",
+        "recoverPassword": "Forgot your password?",
+        "toSignUp": "Don't have an account yet? Create one now",
+        "continueWith": "Continue with "
+    },
+    "register": {
+        "title": "Create account",
+        "subtitle": "Create your account and start managing your projects while keeping everything organized in one place.",
+        "toSignIn": "Already have an account? Sign in"
+    },
+    "fields": {
+        "fullname": "fullname",
+        "email": "email",
+        "password": "password",
+        "confirmPassword": "Confirm password"
+    },
+    "terms": {
+        "ofUse": "Terms of use",
+        "useDeclaration": "By continuing, you confirm your agreement with our ",
+        "ofPrivacy": "Privacy and Cookies Statement.",
+        "privacyDeclaration": "and that you have read our "
+    },
+    "walletOptions": {
+        "connect": "Connect Wallet",
+        "network": "Select Network"
+    },
+    "initiativesOptions": {
+        "create": "Create",
+        "newInitiatives": "New Initiatives",
+        "all": "All",
+        "favorites": "Favorites",
+        "buy": "Buy",
+        "join": "Join",
+        "name": "Name",
+        "priceFluctuation": "Price Fluctuation",
+        "collaborators": "Colaborators",
+        "buySellPrice": "Buy/Sell Price",
+        "missions": "Missions",
+        "likes": "Likes",
+        "shares": "Shares",
+        "actions": "Actions",
+        "rows": "rows",
+        "showing": "Showing ",
+        "to": "to ",
+        "ofTotal": "of total the "
+    },
+    "marketOptions": {
+        "pageTitle": "Purchase and Sale Orders",
+        "openOrders": "Open Orders",
+        "orderHistory": "Order History",
+        "type": "Type",
+        "side": "Side",
+        "price": "Price",
+        "status": "Status"
+    },
+    "homeTexts": {
+        "welcomeMsg": "Welcome to the future of innovation",
+        "introMsg": "Help create startups collaboratively and become co-owner of the projects through tokens linked to the intellectual property.",
+        "startNow": "Start now!",
+        "subtitle1": "Help design, build and promote/boost the startups of the future:",
+        "subtitle2": "open, decentralized and transparent.",
+        "card1Title": "Sign up",
+        "card1Description": "Click Get started and register with your Google account, Facebook or email address.",
+        "card2Title": "Explore the initiatives",
+        "card2Description": "Examine the section Initiatives.",
+        "card3Title": "Join us",
+        "card3Description": "Join any initiative aligned with your interests and skills.",
+        "card4Title": "Receive invitation",
+        "card4Description": "Receive an invitation to the collaborative platform to propose ideas, carry complete missions and earn tokens.",
+        "benefits": "Benefits",
+        "benefit1Title": "Entrepreneurship",
+        "benefit1Description": "Become an entrepreneur with your specialized  talent",
+        "benefit2Title": "Freedom",
+        "benefit2Description": "Work on what you love under your own rules",
+        "benefit3Title": "Inclusion",
+        "benefit3Description": "Real financial inclusion as a co-owner",
+        "benefit4Title": "Token",
+        "benefit4Description": "Diversified tokens operate as an investment fund",
+        "benefit5Title": "Learning",
+        "benefit5Description": "Learn by creating real projects, in real environments",
+        "aboutTitle": "About Us",
+        "aboutDescription": "We are the crazy visionaries, the rebels, the innovators, those who don't settle with the world just as it is. Revolutionary thinkers who believe in only one movement for everyone, in a world without borders. We know freedom is not something we are born with, but something we have to fight for. We advocate for a movement that represents the interests and welfare of society. We believe it is time to change the rules of the game, not to learn to play it.",
+        "missionTitle": "Our mission",
+        "missionDescription": "Accelerate innovation while democratizing access to education and work, allowing humanity to operate as a single organization with no imagined boundaries.",
+        "section5Title": "It is time to change the rules of the game, not learn to play it",
+        "section5Description": "We believe the only way to really/truly change society is by democratizing access to a practical education that allows anyone, anywhere in the world, to contribute to the creation of projects and technologies that will determine the course of civilization.",
+        "more": "Learn more"
+    }
+}
