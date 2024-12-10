@@ -1,4 +1,4 @@
-/* import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Search } from "lucide-react"
 
@@ -33,4 +33,3 @@ const SearchBar = ({value:keyWord, onChange, ...props}) => {
 }
 
 export default SearchBar
- */
