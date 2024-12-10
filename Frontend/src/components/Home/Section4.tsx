@@ -1,23 +1,21 @@
 import { useState, useEffect } from "react";
 import nosotros from '../../assets/home/nosotros.png';
 import nuestra from '../../assets/home/nuestra-mision.png';
-//import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 
 const Section4 = () => {
-  //const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["translation"]);
   const cards = [
     {
-      title: "Nosotros",
-      description:
-        "Nosotros somos los visionarios locos, los rebeldes, los innovadores, los que no se conforman con el mundo como es. Pensadores revolucionarios que creen en un solo movimiento para todos, en un mundo sin fronteras. \n\nSabemos que la libertad no es algo con lo que se nace, sino algo por lo que tienes que luchar. Abogamos por un movimiento que represente los intereses y el bienestar de la sociedad. No creemos que sea tiempo de aprender a jugar el juego, sino de cambiar sus reglas.",
+      title: t("homeTexts.aboutTitle"),
+      description: t("homeTexts.aboutDescription"),
       image: nosotros,
     },
     {
-      title: "Nuestra Misión",
-      description:
-        "Acelerar la innovación al tiempo que democratizamos el acceso a la educación y el trabajo, permitiendo a la humanidad operar como una sola organización sin límites imaginados.",
+      title: t("homeTexts.missionTitle"),
+      description: t("homeTexts.missionDescription"),
       image: nuestra,
-    },
+    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

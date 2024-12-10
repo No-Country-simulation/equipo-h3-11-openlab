@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import InitiativesHeader from '../components/Initiatives/Header'
-import InitiativesContent from '../components/Initiatives/Content'
+//import InitiativesContent from '../components/Initiatives/Content'
 
 const Initiatives = () => {
     return (
@@ -15,7 +15,7 @@ const Initiatives = () => {
                     </div>
                     <div className="basis-5/6">
                         <InitiativesHeader />
-                        <InitiativesContent />
+                        {/* <InitiativesContent /> */}
                     </div>
                 </div>
             </div>

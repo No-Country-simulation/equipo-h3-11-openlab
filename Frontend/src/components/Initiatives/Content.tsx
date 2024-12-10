@@ -1,4 +1,4 @@
-import DataTable from "./DataTable"
+/* import DataTable from "./DataTable"
 
 const InitiativesContent = () => {
     return (
@@ -10,4 +10,4 @@ const InitiativesContent = () => {
     )
 }
 
-export default InitiativesContent
+export default InitiativesContent */
