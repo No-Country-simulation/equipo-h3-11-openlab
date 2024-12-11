@@ -1,13 +1,13 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import { useTranslation } from "react-i18next"
-import SearchBar from '../../components/SearchBar'
-import DataTable from './DataTable'
+//import SearchBar from '../../components/SearchBar'
+//import DataTable from './DataTable'
 import OrderbookInteraction from '../../components/OrderbookInteraction'
 
 
 function Content() {
     const { t } = useTranslation(["translation"]);
-    const [searchFilter, setSearchFilter] = useState("")
+    //const [searchFilter, setSearchFilter] = useState("")
     return (
         <>
             <header className="flex flex-col justify-start items-end w-full pr-16">
@@ -18,7 +18,7 @@ function Content() {
             <div className="flex flex-row justify-between pr-12">
                 <section>
                     <div className="w-full p-8 bg-white rounded-2xl shadow">
-                        <SearchBar
+                        {/*  <SearchBar
                         onChange={(value: any) => setSearchFilter(String(value))} 
                         value={searchFilter ?? ""}/>
                         <div className="flex flex-row justify-start items-center text-slate-500 font-semibold py-4 gap-4">
@@ -29,7 +29,7 @@ function Content() {
                                 {t("marketOptions.orderHistory")}
                             </button>
                         </div>
-                        <DataTable />
+                        <DataTable /> */}
                     </div>
                 </section>
                 <section>
