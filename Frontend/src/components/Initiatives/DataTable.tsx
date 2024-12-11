@@ -211,7 +211,11 @@ const DataTable: React.FC<DataTableProps> = ({
               </tr>
             ))}
           </tbody>
+          {isModalOpen && (
+            <OrderbookInteraction isOpen={isModalOpen} onClose={closeModal} />
+          )}
         </table>
+
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button
@@ -274,7 +278,6 @@ const DataTable: React.FC<DataTableProps> = ({
           </select>
         </div>
         {/* Modal de interacción */}
-        <OrderbookInteraction isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </>
   );
