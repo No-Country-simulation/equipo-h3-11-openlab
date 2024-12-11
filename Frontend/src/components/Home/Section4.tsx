@@ -23,7 +23,7 @@ const Section4 = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
-    }, 6000);
+    }, 12000);
     return () => clearInterval(interval);
   }, [cards.length]);
 
