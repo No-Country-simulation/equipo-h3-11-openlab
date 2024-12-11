@@ -1,23 +1,56 @@
-import { useTranslation } from "react-i18next"
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const InitiativesFilters = () => {
-    const { t } = useTranslation(["translation"]);
-    return (
-        <div className="flex flex-row justify-start items-center text-slate-500 font-semibold py-4 gap-4">
-            <button className="border border-slate-400 rounded-xl w-40 h-10">
-                {t("initiativesOptions.all")}
-            </button>
-            <button className="border border-blue-900 bg-blue-200 text-blue-950 rounded-xl w-40 h-10">
-                {t("initiatives")}
-            </button>
-            <button className="border border-slate-400 rounded-xl w-40 h-10">
-                {t("initiativesOptions.newInitiatives")}
-            </button>
-            <button className="border border-slate-400 rounded-xl w-40 h-10">
-                {t("initiativesOptions.favorites")}
-            </button>
-        </div>
-    )
+interface InitiativesFiltersProps {
+  onFilterChange: (filter: string) => void;
 }
 
-export default InitiativesFilters
+const InitiativesFilters: React.FC<InitiativesFiltersProps> = ({
+  onFilterChange,
+}) => {
+  const { t } = useTranslation(["translation"]);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    onFilterChange(filter);
+  };
+
+  const buttonClass = (filter: string) =>
+    `border border-slate-400 rounded-xl w-40 h-10 transition ${
+      activeFilter === filter
+        ? "bg-blue-500 text-white"
+        : "bg-white text-slate-500"
+    } hover:bg-blue-100 hover:border-blue-500`;
+
+  return (
+    <div className="flex flex-row justify-start items-center text-slate-500 font-semibold py-4 gap-4">
+      <button
+        onClick={() => handleFilterChange("active")}
+        className={buttonClass("active")}
+      >
+        {t("initiatives")}
+      </button>
+      <button
+        onClick={() => handleFilterChange("new")}
+        className={buttonClass("new")}
+      >
+        {t("initiativesOptions.newInitiatives")}
+      </button>
+      <button
+        onClick={() => handleFilterChange("popular")}
+        className={buttonClass("popular")}
+      >
+        {t("initiativesOptions.favorites")}
+      </button>
+      <button
+        onClick={() => handleFilterChange("all")}
+        className={buttonClass("all")}
+      >
+        {t("initiativesOptions.all")}
+      </button>
+    </div>
+  );
+};
+
+export default InitiativesFilters;

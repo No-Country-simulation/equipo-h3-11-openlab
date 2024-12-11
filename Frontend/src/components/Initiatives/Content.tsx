@@ -1,13 +1,32 @@
-/* import DataTable from "./DataTable"
+import { useState } from "react";
+import SearchBar from "../SearchBar";
+import InitiativesFilters from "./Filters";
+import DataTable from "./DataTable"; // Asegúrate de importar el componente DataTable
 
-const InitiativesContent = () => {
-    return (
-        <div className="flex flex-col justify-start items-center w-full h-full px-10">
-            <div className="w-full p-8 bg-white rounded-2xl shadow">
-                <DataTable />
-            </div>
-        </div>
-    )
-}
+const InitiativesContent: React.FC = () => {
+  const [searchFilter, setSearchFilter] = useState<string>(""); // Filtro de búsqueda
+  const [activeFilter, setActiveFilter] = useState<string>("all"); // Filtro activo (ej., categoría)
 
-export default InitiativesContent */
+  // Función que se llama cuando se actualiza el filtro de búsqueda
+  const handleSearchChange = (value: string) => {
+    setSearchFilter(value);
+  };
+
+  // Función que se llama cuando se actualiza el filtro activo
+  const handleFilterChange = (value: string) => {
+    setActiveFilter(value);
+  };
+
+  return (
+    <div>
+      {/* El SearchBar y los filtros pueden interactuar con el estado del componente padre */}
+      <SearchBar onChange={handleSearchChange} value={searchFilter} />
+      <InitiativesFilters onFilterChange={handleFilterChange} />
+
+      {/* Aquí pasamos el estado como props al DataTable */}
+      <DataTable searchFilter={searchFilter} activeFilter={activeFilter} />
+    </div>
+  );
+};
+
+export default InitiativesContent;

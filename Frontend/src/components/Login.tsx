@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import googleIcon from "../assets/icons/google.svg";
 import facebookIcon from "../assets/icons/facebook.svg";
 import main from "../assets/icons/mail.png";
@@ -12,9 +12,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(""); 
-  const [errorMessage, setErrorMessage] = useState(""); 
-  const [showModal, setShowModal] = useState(false); 
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation(["translation"]);
 
@@ -31,20 +31,20 @@ const Login = () => {
 
     if (user) {
       setSuccessMessage(`Sesión iniciada correctamente, Hola ${user.name}!`);
-      setShowModal(true); 
+      setShowModal(true);
       setTimeout(() => {
         setShowModal(false);
-        navigate("/userhome"); 
+        navigate("/userhome");
       }, 2000);
     } else {
       setErrorMessage("Correo electrónico o contraseña incorrectos.");
-      setShowModal(true); 
+      setShowModal(true);
     }
   };
 
   const closeModal = () => {
-    setShowModal(false); 
-    setErrorMessage(""); 
+    setShowModal(false);
+    setErrorMessage("");
     setSuccessMessage("");
   };
 
@@ -62,9 +62,7 @@ const Login = () => {
       <div className="w-[350px] px-3 py-4 bg-white flex flex-col justify-start items-end gap-6 rounded-lg">
         <div className="self-stretch flex flex-col gap-3">
           <h1 className="text-[#1a1a1a] text-3xl font-bold">{t("signIn")}</h1>
-          <p className="text-[#1a1a1a] text-xs">
-          {t("loginPage.subtitle")}
-          </p>
+          <p className="text-[#1a1a1a] text-xs">{t("loginPage.subtitle")}</p>
         </div>
 
         <div className="self-stretch flex flex-col gap-3">
@@ -117,7 +115,9 @@ const Login = () => {
           onClick={handleLogin}
           className="self-stretch h-10 bg-[#3d7bff] rounded-md shadow flex items-center justify-center"
         >
-          <span className="text-white text-sm font-semibold">{t("signIn")}</span>
+          <span className="text-white text-sm font-semibold">
+            {t("signIn")}
+          </span>
         </button>
 
         <div className="self-stretch h-px bg-[#adadad] my-1"></div>
@@ -128,7 +128,9 @@ const Login = () => {
             className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2"
           >
             <img src={googleIcon} alt="Google Icon" className="h-5" />
-            <span className="text-[#1a1a1a] text-xs">{t("loginPage.continueWith")} Google</span>
+            <span className="text-[#1a1a1a] text-xs">
+              {t("loginPage.continueWith")} Google
+            </span>
           </button>
 
           <button
@@ -136,7 +138,9 @@ const Login = () => {
             className="w-full h-10 border border-[#6e6e6e] rounded-lg flex items-center justify-center gap-2"
           >
             <img src={facebookIcon} alt="Facebook Icon" className="h-5 pl-2" />
-            <span className="text-[#1a1a1a] text-xs">{t("loginPage.continueWith")} Facebook</span>
+            <span className="text-[#1a1a1a] text-xs">
+              {t("loginPage.continueWith")} Facebook
+            </span>
           </button>
         </div>
 

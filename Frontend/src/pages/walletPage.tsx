@@ -1,3 +1,4 @@
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
@@ -20,5 +21,4 @@ const WalletPage = () => {
     );
 };
 
-
-export default WalletPage
+export default WalletPage;
