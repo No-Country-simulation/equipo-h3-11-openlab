@@ -13,28 +13,28 @@ const Section3: React.FC = () => {
   const benefits = [
     {
       icon: icon1,
-      title: 'Emprender',
-      description: 'Conviértete en emprendedor con tu talento especializado',
+      title: t("homeTexts.benefit1Title"),
+      description: t("homeTexts.benefit1Description"),
     },
     {
       icon: icon2,
-      title: 'Libertad',
-      description: 'Trabaja en lo que amas bajo tus propias reglas',
+      title: t("homeTexts.benefit2Title"),
+      description: t("homeTexts.benefit2Description"),
     },
     {
       icon: icon3,
-      title: 'Inclusión',
-      description: 'Verdadera inclusión financiera como co-propietario',
+      title: t("homeTexts.benefit3Title"),
+      description: t("homeTexts.benefit3Description"),
     },
     {
       icon: icon4,
-      title: 'Token',
-      description: 'Token Diversificados Operan como un fondo de inversión',
+      title: t("homeTexts.benefit4Title"),
+      description: t("homeTexts.benefit4Description"),
     },
     {
       icon: icon5,
-      title: 'Aprendizaje',
-      description: 'Aprende creando proyectos reales, en entornos reales',
+      title: t("homeTexts.benefit5Title"),
+      description: t("homeTexts.benefit5Description"),
     },
   ];
 
@@ -77,7 +77,7 @@ const Section3: React.FC = () => {
         </div>
 
         {/* Columna Derecha */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center">
+        <div className="w-full lg:w-1/2 flex items-center pt-12 md:pt-0 justify-center">
           <img
             src={iPhoneX}
             alt="iPhone"

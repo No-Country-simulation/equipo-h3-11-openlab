@@ -24,23 +24,24 @@ const Section2: React.FC = () => {
         {/* Cards con Líneas */}
         {[
           {
-            title: "Inscríbete",
+            title: t("homeTexts.card1Title"),
             description:
-              "Da clic a empezar y regístrate con tu cuenta de Google, Facebook o correo electrónico.",
+            t("homeTexts.card1Description"),
           },
           {
-            title: "Explora las iniciativas",
-            description: "Explora las iniciativas en la sección de iniciativas.",
+            title: t("homeTexts.card2Title"),
+            description:
+            t("homeTexts.card2Description"),
           },
           {
-            title: "Únete",
+            title: t("homeTexts.card3Title"),
             description:
-              "Únete a alguna iniciativa que se alinee con tus intereses y habilidades.",
+            t("homeTexts.card3Description"),
           },
           {
-            title: "Recibe invitación",
+            title: t("homeTexts.card4Title"),
             description:
-              "Recibe una invitación a la plataforma de colaboración para proponer ideas, cumplir misiones y ganar tokens.",
+            t("homeTexts.card4Description"),
           },
         ].map((card, index, array) => (
           <React.Fragment key={index}>
