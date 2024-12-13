@@ -42,7 +42,10 @@
     },
     "walletOptions": {
         "connect": "Connect Wallet",
-        "network": "Select Network"
+        "network": "Select Network",
+        "totalValue": "Total Value",
+        "estimatedBalance": "Estimated balance",
+        "keyCopy": "Copied!"
     },
     "initiativesOptions": {
         "create": "Create",
