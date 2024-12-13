@@ -1,21 +1,29 @@
 import userPic from '../../assets/user-pic.png';
 import { useState, useEffect } from 'react';
 import copyIcon from '../../assets/copy.png';
-import balance from '../../assets/balance.png';
+import balance from '../../assets/ethereum.png';
 import graphic from '../../assets/graphic.svg';
 import { useWallet } from "../../context/WalletContext";
 import { useTranslation } from "react-i18next";
 import { useFetch } from '../../services/useFetch';
 
+const config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://api.coinbase.com/api/v3/brokerage/market/products/ETH-USD',
+  headers: { 
+    'Content-Type': 'application/json'
+  }
+};
+
 const UserBalance = () => {
   const [copyMessage, setCopyMessage] = useState('');
   const { signer, walletAddress } = useWallet();
   const { t } = useTranslation(["translation"]);
-  const { data, loading } = useFetch("https://api.coinbase.com/v2/exchange-rates?currency=ETH")
+  const { data } = useFetch(config)
 
-  const usdPrice = data?.rates?.USD
+  const usdPrice = data?.price?.example
   console.log(usdPrice);
-  
 
   const [accountBalance, setAccountBalance] = useState<any>("No disponible");
   const [usdBalance, setUsdBalance] = useState<any>("No disponible");
@@ -28,6 +36,7 @@ const UserBalance = () => {
         let finalNumber = number / 100000
         setAccountBalance(finalNumber)      
       })
+      .finally(() => usdPrice ? setUsdBalance(usdPrice) : "")
   }, [])
 
   const handleCopy = () => {
@@ -62,7 +71,7 @@ const UserBalance = () => {
           </button>
           <div className="flex items-center gap-2 bg-gray-50 border border-blue-100 rounded-lg px-4 py-2">
             <div className="text-gray-500 font-medium overflow-hidden text-ellipsis">
-              { walletAddress }
+              { walletAddress ? walletAddress : "No Disponible" }
             </div>
           </div>
         </div>
@@ -81,7 +90,6 @@ const UserBalance = () => {
               <div className="flex flex-col">
                 <span className="text-xl font-medium text-gray-800">{accountBalance} ETH</span>
                 {usdBalance &&<span className="block text-sm text-gray-600 mt-1">= ${usdBalance}</span>}
-                {loading &&<span className="block text-sm text-gray-600 mt-1">Loading...</span>}
               </div>
             </div>
           </div>
@@ -93,13 +101,12 @@ const UserBalance = () => {
                 alt="Currency Icon"
               />
               <div className="flex flex-col">
-                <span className="text-gray-800 text-base font-medium">MATIC</span>
-                <span className="text-gray-500 text-sm">ETH</span>
+                <span className="text-gray-800 text-base font-medium">ETH</span>
               </div>
             </div>
             <div className="flex flex-col items-end">
-              <span className="text-blue-600 text-base font-medium">+0.63%</span>
-              <span className="text-gray-500 text-sm">$67,671.7</span>
+              <span className="text-blue-600 text-base font-medium"> - % </span>
+              <span className="text-gray-500 text-sm"> $ - </span>
             </div>
           </div>
         </div>

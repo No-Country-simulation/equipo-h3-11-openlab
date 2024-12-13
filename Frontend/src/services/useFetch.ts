@@ -1,16 +1,26 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-export function useFetch(url:string) {
+export function useFetch(config:any) {
     const [data, setData] = useState<any>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         setLoading(true)
-        fetch(url)
-        .then((response) => response.json)
-        .then((data) => setData(data))
+        axios.request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setData(response.data)
+          })
+        .catch((error) => {
+            console.log(error);
+        })
         .finally(() => setLoading(false));
     }, [])
     
     return { data, loading }
 }
+
+
+
+
