@@ -60,7 +60,6 @@ const Section4 = () => {
               src={card.image}
               alt={`Imagen ${card.title}`}
               className="w-full md:w-[50%] h-auto rounded-3xl object-cover"
-              loading="lazy"
             />
             {/* Texto */}
             <div className="max-w-lg min-h-[300px] md:min-h-[400px] flex flex-col justify-center space-y-6 text-center md:text-left md:pl-14">

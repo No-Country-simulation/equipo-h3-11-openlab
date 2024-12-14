@@ -83,7 +83,6 @@ const Section3: React.FC = () => {
             src={iPhoneX}
             alt="iPhone"
             className="max-w-full max-h-[38rem] object-contain"
-            loading="lazy"
           />
         </div>
       </div>
