@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo-white.svg";
 import facebook from "../assets/footer/facebook.svg";
 import instagram from "../assets/footer/instagram.svg";
@@ -19,6 +19,9 @@ import close from "../assets/close.png";
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [successModal, setSuccessModal] = useState(false);
   const { t } = useTranslation(["translation"]);
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,6 +81,31 @@ const Footer = () => {
     setShowModal(!showModal);
   };
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setEmailError(''); // Limpiar el error al escribir
+  };
+
+  const validateEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setEmailError('Por favor ingresa un correo válido');
+      return;
+    }
+
+    // Si el correo es válido, mostrar el modal de éxito
+    setSuccessModal(true);
+
+    // Opcionalmente, puedes limpiar el campo de email
+    setEmail('');
+  };
+
   return (
     <footer className="w-full bg-white">
       <div className="mx-auto px-2 md:px-20 py-6 space-y-5">
@@ -118,9 +146,8 @@ const Footer = () => {
           <div className="flex flex-col items-end space-y-2 mx-auto md:mx-0">
             {/* Íconos sociales alineados a la derecha */}
             <div
-              className={`flex items-center space-x-5 mb-[-2rem] md:mb-0 z-20 ${
-                location.pathname !== "/" ? "mt-6" : ""
-              }  md:justify-start justify-end  `}
+              className={`flex items-center space-x-5 mb-[-2rem] md:mb-0 z-20 ${location.pathname !== "/" ? "mt-6" : ""
+                }  md:justify-start justify-end  `}
             >
               <a
                 href="https://facebook.com"
@@ -154,23 +181,51 @@ const Footer = () => {
                 <div className="text-center text-[#1a346b] md:ml-0 text-lg font-semibold mb-4">
                   Suscríbete a nuestro Boletín
                 </div>
-                <div className="flex items-center gap-6 md:ml-0 justify-between w-full max-w-[400px]">
+                <form onSubmit={handleSubmit} className="flex items-center gap-6 md:ml-0 justify-between w-full max-w-[400px]">
                   <input
                     type="email"
+                    value={email}
+                    onChange={handleEmailChange}
                     placeholder="Email"
                     className="w-[250px] h-10 px-4 border border-gray-300 rounded-md shadow-md"
                   />
-                  <button className="h-10 px-6 bg-[#3a23ff] text-white rounded-md">
+                  <button
+                    type="submit"
+                    className="h-10 px-6 bg-[#3a23ff] text-white rounded-md hover:bg-blue-700 transition-colors"
+                  >
                     Enviar
                   </button>
-                </div>
+                </form>
+                {emailError && (
+                  <p className="text-red-500 text-sm mt-2">{emailError}</p>
+                )}
               </div>
             )}
+
           </div>
         </div>
       </div>
 
       <div className="w-full border-t border-gray-300"></div>
+
+      {/* Modal de éxito */}
+      {successModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-md max-w-lg w-full">
+            <h2 className="text-xl font-bold mb-4">¡Suscripción exitosa!</h2>
+            <p className="text-gray-700">Gracias por suscribirte a nuestro boletín.</p>
+
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={() => setSuccessModal(false)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto px-6 md:px-20 py-6 space-y-2">
         {/* Sección de derechos de autor y política de privacidad */}
@@ -193,6 +248,7 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Modal de privacidad */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-md max-w-lg w-full">
