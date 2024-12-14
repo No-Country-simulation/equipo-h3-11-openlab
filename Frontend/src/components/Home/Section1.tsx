@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import fondo from '/assets/home/section1-vector.svg';
 import imagen from '../../assets/home/svg2.svg';
 import empezar from '../../assets/home/empezar-buton.svg';
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Section1: React.FC = () => {
   const { t } = useTranslation(["translation"]);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const navigate = useNavigate();
+
+  // Redirigir automáticamente si el usuario está autenticado
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/userhome");
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Función para manejar el clic en el botón "Get Started"
+  const handleGetStarted = async () => {
+    if (!isAuthenticated) {
+      await loginWithRedirect({
+        appState: { targetUrl: "/userhome" },
+      });
+    }
+  };
+
   return (
     <section
       className="w-full bg-bottom bg-no-repeat bg-cover"
@@ -20,7 +41,10 @@ const Section1: React.FC = () => {
           <p className="text-white text-lg font-medium">
             {t("homeTexts.introMsg")}
           </p>
-          <button className="flex items-center justify-center gap-4 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition">
+          <button
+            onClick={handleGetStarted}
+            className="flex items-center justify-center gap-4 w-44 h-14 bg-[#3a23ff] rounded-[10px] shadow-lg text-white text-lg font-semibold hover:bg-[#2a1adf] transition"
+          >
             <img src={empezar} alt="Ícono de empezar" className="w-6 h-6" />
             {t("getStarted")}
           </button>
