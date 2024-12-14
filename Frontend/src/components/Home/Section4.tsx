@@ -34,7 +34,7 @@ const Section4 = () => {
     );
   };
 
-  // Movimiento automático cada 12 segundos
+  // Movimiento automático cada 20 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -55,12 +55,30 @@ const Section4 = () => {
             className="flex-shrink-0 w-full flex flex-col-reverse md:flex-row items-center gap-6 md:gap-12 px-6 relative"
             style={{ width: "100%" }}
           >
-            {/* Imagen */}
-            <img
-              src={card.image}
-              alt={`Imagen ${card.title}`}
-              className="w-full md:w-[50%] h-auto rounded-3xl object-cover"
-            />
+            <div className="relative w-full md:w-[50%] h-auto">
+              <img
+                src={card.image}
+                alt={`Imagen ${card.title}`}
+                className="w-full h-auto rounded-3xl object-cover"
+              />
+
+              {/* Botón para avanzar */}
+              <button
+                onClick={nextSlide}
+                className="absolute bottom-12 right-[-5rem] transform translate-y-1/2 w-[5rem] h-[6rem] bg-[#2f00ff] rounded-tr-2xl rounded-br-2xl text-lg font-semibold flex items-center justify-center hover:bg-[#3a23ff] transition"
+              >
+                <img src={arrow} alt="arrow-icon" />
+              </button>
+
+              {/* Botón para retroceder */}
+              <button
+                onClick={prevSlide}
+                className="absolute bottom-12 right-0 transform translate-y-1/2 w-[5rem] h-[7.6rem] rounded-tr-2xl rounded-br-2xl flex items-center justify-center transition-opacity duration-300 opacity-50 hover:opacity-100"
+              >
+                <img src={ractangle} alt="rectangle-icon" />
+              </button>
+            </div>
+
             {/* Texto */}
             <div className="max-w-lg min-h-[300px] md:min-h-[400px] flex flex-col justify-center space-y-6 text-center md:text-left md:pl-14">
               <h2 className="text-[#0f0f30] text-3xl md:text-4xl font-bold">
@@ -70,20 +88,6 @@ const Section4 = () => {
                 {card.description}
               </p>
             </div>
-
-            {/* Botón para desplazar */}
-            <button
-              onClick={nextSlide}
-              className="absolute bottom-[6.8rem] right-[33.5rem] w-[5rem] h-[6rem] bg-[#2f00ff] rounded-tr-2xl rounded-br-2xl text-lg font-semibold flex items-center justify-center hover:bg-[#3a23ff] transition"
-            >
-              <img src={arrow} alt="" />
-            </button>
-            <button
-              onClick={prevSlide}
-              className="absolute bottom-24 right-[38.5rem] w-[5rem] h-[7.6rem] rounded-tr-2xl rounded-br-2xl flex items-center justify-center transition-opacity duration-300 opacity-50 hover:opacity-100"
-            >
-              <img src={ractangle} alt="" />
-            </button>
           </div>
         ))}
       </div>
