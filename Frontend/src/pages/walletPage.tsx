@@ -11,7 +11,7 @@ const WalletPage = () => {
             <Header />
             <div className="main-content flex-grow relative flex">
                 <Sidebar />
-                <div className="flex-1 p-4"> {/* Ajusté el contenido para que ocupe el espacio restante */}
+                <div className="flex-1">
                     <UserBalance />
                     <TableTrading />
                 </div>
