@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Market from '../../assets/unsplash.png';
 import search from '../../assets/search.png';
 import cancel from '../../assets/cancel.png';
+import { useTranslation } from "react-i18next"
 
 type PurchaseData = {
   image: string;
@@ -16,6 +17,7 @@ type PurchaseData = {
 
 const Purchase = () => {
   const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
+  const { t } = useTranslation(["translation"])
 
   const data: PurchaseData[] = React.useMemo(
     () => [
@@ -257,7 +259,7 @@ const Purchase = () => {
           <img src={search} alt="Search" />
           <input
             type="text"
-            placeholder="Buscar"
+            placeholder={t("search")}
             className="w-full bg-transparent text-[#8b8b8b] text-base font-normal outline-none pl-2"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} // Actualizar el término de búsqueda
@@ -267,11 +269,11 @@ const Purchase = () => {
 
       {/* Botones */}
       <div className="flex gap-4 mb-4">
-        <button className="w-[152.95px] h-9 bg-[#ecf2ff] text-[#1a346b] font-medium border border-[#1a346b] rounded-[10px] hover:bg-[#dce6ff] hover:text-[#0f2452] transition-colors duration-200">
-          Open Orders
+        <button className="w-48 h-9 bg-[#ecf2ff] text-[#1a346b] font-medium border border-[#1a346b] rounded-[10px] hover:bg-[#dce6ff] hover:text-[#0f2452] transition-colors duration-200">
+          {t("marketOptions.openOrders")}
         </button>
-        <button className="w-[152.95px] h-9 bg-[#fefefe] text-[#6e6e6e] font-medium border border-[#d2d2d2] rounded-[10px] hover:bg-[#f3f3f3] hover:text-[#4a4a4a] transition-colors duration-200">
-          Order History
+        <button className="w-48 h-9 bg-[#fefefe] text-[#6e6e6e] font-medium border border-[#d2d2d2] rounded-[10px] hover:bg-[#f3f3f3] hover:text-[#4a4a4a] transition-colors duration-200">
+          {t("marketOptions.orderHistory")}
         </button>
       </div>
 
