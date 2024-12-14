@@ -283,7 +283,7 @@ const Footer = () => {
           className="text-black text-xl font-bold hover:text-red-500 transition"
           aria-label="Cerrar modal"
         >
-          <img src={close} alt="" />
+          <img src={close} alt="close-icon" />
         </button>
       </div>
 

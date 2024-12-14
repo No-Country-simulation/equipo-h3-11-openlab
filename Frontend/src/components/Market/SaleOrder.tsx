@@ -23,7 +23,7 @@ const SaleOrder = () => {
           <div className="bg-blue-50 rounded-lg p-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={ethIcon} alt="" />
+                <img src={ethIcon} alt="ether-icon" />
                 <select className="text-gray-800 bg-blue-50 font-medium text-base p-1">
                   <option value="ETH">ETH</option>
                   <option value="BTC">BTC</option>
@@ -38,7 +38,7 @@ const SaleOrder = () => {
           <div className="bg-blue-50 rounded-lg p-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2 w-9 h-9">
-                <img src={icon} alt="" />
+                <img src={icon} alt="icon" />
                 <div className="text-gray-800 font-medium text-base pl-1">OPC</div>
               </div>
               <div className="text-gray-500 text-lg font-semibold">0.00</div>
@@ -82,7 +82,7 @@ const SaleOrder = () => {
       <div className="w-full max-w-md h-auto flex flex-col justify-start items-center gap-2 mt-4">
         <div className="p-2.5 flex justify-center items-center gap-2.5">
           <div className="text-blue-500 text-sm font-normal">Limit Order Summary</div>
-          <img src={arrowUp} alt="" />
+          <img src={arrowUp} alt="arrow-up" />
         </div>
         <div className="w-full px-8 py-4  flex justify-between items-center">
           <div className="w-1/3 flex flex-col gap-4">
