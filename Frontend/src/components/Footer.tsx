@@ -5,11 +5,72 @@ import facebook from "../assets/footer/facebook.svg";
 import instagram from "../assets/footer/instagram.svg";
 import twitter from "../assets/footer/twitter.svg";
 import { useTranslation } from "react-i18next";
+import { FaLinkedin, FaGoogleDrive } from 'react-icons/fa';
+import anibal from "../assets/team/anibal.png";
+import antonio from "../assets/team/antonio.png";
+import damian from "../assets/team/damian.jpg";
+import jose from "../assets/team/jose.png";
+import matias from "../assets/team/matias.png";
+import paula from "../assets/team/paula.jpg";
+import ricardo from "../assets/team/ricardo.png";
+import icon from "../assets/team/icon.png";
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation(["translation"]);
   const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const teamMembers = [
+    {
+      name: 'Jose Contreras',
+      role: 'Team Leader',
+      linkedin: 'https://www.linkedin.com/in/joselbcontreras/',
+      avatar: jose,
+    },
+    {
+      name: 'Damian Berrojalvis',
+      role: 'Project Manager',
+      linkedin: 'https://www.linkedin.com/in/dambedev/',
+      avatar: damian,
+    },
+    {
+      name: 'Paula Sancho',
+      role: 'Diseño UX/UI',
+      linkedin: 'https://www.linkedin.com/in/paulasancho90/',
+      avatar: paula,
+    },
+    {
+      name: 'Ricardo David Minhot',
+      role: 'QA Tester',
+      linkedin: 'https://www.linkedin.com/in/ricardo-david-minhot/',
+      avatar: ricardo,
+    },
+    {
+      name: 'Antonio Villacrés',
+      role: 'Frontend',
+      linkedin: 'https://www.linkedin.com/in/antonio-v-5671a390/',
+      avatar: antonio,
+    },
+    {
+      name: 'Matias Acevedo',
+      role: 'Developer',
+      linkedin: 'https://www.linkedin.com/in/matias-nicolas-acevedo/',
+      avatar: matias,
+    },
+    {
+      name: 'Anibal Elbaum',
+      role: 'Backend',
+      linkedin: 'https://www.linkedin.com/in/inganibalelbaum',
+      avatar: anibal,
+    },
+    {
+      name: 'Documentación',
+      role: 'Google Drive',
+      linkedin: 'https://drive.google.com/drive/folders/13yeH4MPuHxq88Pp0mWi62MMnvH0YEAiy',
+      avatar: icon,
+    }
+  ];
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -118,6 +179,12 @@ const Footer = () => {
           >
             {t("privacyPolicy.title")}
           </div>
+          <div
+            className="text-[#1a346b] text-sm font-medium cursor-pointer hover:underline"
+            onClick={() => setIsModalOpen(true)}
+          >
+            💗 equipo-h3-11-openlab | No Country 🌎
+          </div>
           <div className="text-right text-[#1a346b] text-sm font-medium">
             © 2024 Openlab SAS
           </div>
@@ -138,6 +205,52 @@ const Footer = () => {
                 className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
               >
                 {t("close")}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white m-4 md:m-0 p-4 md:p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
+            <h2 className="text-black text-base text-center font-semibold mb-4">
+            💗 equipo-h3-11-openlab | No Country 🌎
+            </h2>
+            <div className="grid grid-cols-2 gap-4 ">
+              {teamMembers.map((member) => (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
+                >
+                  <div key={member.name} className="flex flex-col md:flex-row text-[#8163b0] bg-[#fceade] items-center p-2 border border-[#ea526f] rounded-lg">
+                    <img
+                      src={member.avatar || 'https://via.placeholder.com/150'}
+                      alt={`${member.name}'s avatar`}
+                      className="w-10 h-10 rounded-full md:mr-4"
+                    />
+                    <div className="flex flex-col items-center md:items-start">
+                      <p className="font-semibold text-xs md:text-base text-center">{member.name}</p>
+                      <div className="flex items-center mt-1">
+                        <p className="text-xs md:text-sm text-black font-semibold ">{member.role}&nbsp; </p>
+                        <div className='text-blue-500'>
+                          {member.role === 'Google Drive' ? <FaGoogleDrive /> : <FaLinkedin />}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
+              >
+                Cerrar
               </button>
             </div>
           </div>
