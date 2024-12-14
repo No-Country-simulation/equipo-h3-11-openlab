@@ -56,6 +56,7 @@ const Section1: React.FC = () => {
             src={imagen}
             alt="Imagen representativa"
             className="w-[28rem]"
+            loading="lazy"
           />
         </div>
       </div>
