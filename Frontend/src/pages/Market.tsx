@@ -21,10 +21,10 @@ const Market = () => {
               {t("marketOptions.pageTitle")}
             </div>
             <div className="flex flex-col md:flex-row">
-              <div className="w-full md:w-3/5">
+              <div className="w-full basis-4/6">
                 <Purchase />
               </div>
-              <div className="w-full md:w-2/5 pr-10">
+              <div className="w-full basis-2/6">
                 <SaleOrder />
               </div>
             </div>

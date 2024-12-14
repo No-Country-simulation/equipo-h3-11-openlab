@@ -9,13 +9,17 @@ const SaleOrder = () => {
 
         {/* Título con "Buy" y "Sell" */}
         <div className="flex justify-start items-center gap-4">
-          <div className="text-gray-500 text-lg font-medium">Buy</div>
-          <div className="text-indigo-500 text-lg font-medium">Sell</div>
+          <div className="text-gray-500 text-lg font-medium hover:text-indigo-500 hover:underline cursor-pointer">
+            Buy
+          </div>
+          <div className="text-gray-500 text-lg font-medium hover:text-indigo-500 hover:underline cursor-pointer">
+            Sell
+          </div>
         </div>
 
         {/* Resumen de orden */}
         <div className="w-full flex justify-between items-end border-b border-gray-200 pb-2">
-          {/* Agregar contenido según sea necesario */}
+          { }
         </div>
 
         {/* Detalles de la orden de compra/venta */}
@@ -51,11 +55,10 @@ const SaleOrder = () => {
                   <div className="text-sm text-gray-500">Sell OPC at rate</div>
                   <div className="text-base font-medium text-gray-800">15,756003538</div>
                 </div>
-                <div>
+                <div className="flex flex-col items-end space-y-2">
                   <div className="text-xs text-gray-500 underline">Use market</div>
                   <div className="text-xs text-gray-800">ETH</div>
                   <div className="text-xs text-gray-500">= $3624,24</div>
-
                 </div>
               </div>
             </div>
@@ -81,23 +84,23 @@ const SaleOrder = () => {
       {/* Nuevo elemento: Limit Order Summary */}
       <div className="w-full max-w-md h-auto flex flex-col justify-start items-center gap-2 mt-4">
         <div className="p-2.5 flex justify-center items-center gap-2.5">
-          <div className="text-blue-500 text-sm font-normal">Limit Order Summary</div>
+          <div className="text-blue-500 text-md font-normal">Limit Order Summary</div>
           <img src={arrowUp} alt="arrow-up" />
         </div>
         <div className="w-full px-8 py-4  flex justify-between items-center">
           <div className="w-1/3 flex flex-col gap-4">
-            <div className="text-blue-600 text-xs font-normal">Sell Order</div>
-            <div className="text-blue-600 text-xs font-normal">To Buy</div>
-            <div className="text-blue-600 text-xs font-normal">Buy OPC at Rate</div>
-            <div className="text-blue-600 text-xs font-normal">Expiry</div>
-            <div className="text-blue-600 text-xs font-normal">Platform Fee</div>
+            <div className="text-blue-600 text-sm font-normal">Sell Order</div>
+            <div className="text-blue-600 text-sm font-normal">To Buy</div>
+            <div className="text-blue-600 text-sm font-normal">Buy OPC at Rate</div>
+            <div className="text-blue-600 text-sm font-normal">Expiry</div>
+            <div className="text-blue-600 text-sm font-normal">Platform Fee</div>
           </div>
           <div className="w-1/3 flex flex-col gap-4 text-right">
-            <div className="text-gray-800 text-xs font-normal">- ETH</div>
-            <div className="text-gray-800 text-xs font-normal">- OPC</div>
-            <div className="text-gray-800 text-xs font-normal">15,751469285 SOL</div>
-            <div className="text-gray-800 text-xs font-normal">7 days</div>
-            <div className="text-gray-800 text-xs font-normal">0.05%</div>
+            <div className="text-gray-800 text-sm font-normal">- ETH</div>
+            <div className="text-gray-800 text-sm font-normal">- OPC</div>
+            <div className="text-gray-800 text-sm font-normal">15,751469285 SOL</div>
+            <div className="text-gray-800 text-sm font-normal">7 days</div>
+            <div className="text-gray-800 text-sm font-normal">0.05%</div>
           </div>
         </div>
       </div>

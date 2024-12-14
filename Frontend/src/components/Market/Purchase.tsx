@@ -182,52 +182,6 @@ const Purchase = () => {
           </div>
         ),
       },
-      {
-        image: Market, 
-        name: 'Polkadot',
-        type: 'Limit',
-        action: 'Buy',
-        quantity: '12',
-        price: '$4100',
-        actions: (
-          <div className="w-14 h-9 relative">
-            <button className="w-full h-full bg-[#3d7bff] rounded-[10px] shadow-lg flex justify-center items-center transition duration-300 ease-in-out transform hover:bg-[#1d63d8] hover:scale-105 hover:shadow-xl">
-              <span className="text-[#fefefe] text-sm font-medium">Edit</span>
-            </button>
-          </div>
-        ),
-        cancelAction: (
-          <div>
-            <button className="flex items-center gap-2 px-3 py-2 bg-[#fefefe] rounded-[10px] transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none">
-              <img src={cancel} alt="Cancel" className="w-5 h-5" />
-              <span className="text-[#eb4335] text-sm font-medium ">Cancel</span>
-            </button>
-          </div>
-        ),
-      },
-      {
-        image: Market, 
-        name: 'Chainlink',
-        type: 'Market',
-        action: 'Sell',
-        quantity: '9',
-        price: '$3000',
-        actions: (
-          <div className="w-14 h-9 relative">
-            <button className="w-full h-full bg-[#3d7bff] rounded-[10px] shadow-lg flex justify-center items-center transition duration-300 ease-in-out transform hover:bg-[#1d63d8] hover:scale-105 hover:shadow-xl">
-              <span className="text-[#fefefe] text-sm font-medium">Edit</span>
-            </button>
-          </div>
-        ),
-        cancelAction: (
-          <div>
-            <button className="flex items-center gap-2 px-3 py-2 bg-[#fefefe] rounded-[10px] transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none">
-              <img src={cancel} alt="Cancel" className="w-5 h-5" />
-              <span className="text-[#eb4335] text-sm font-medium ">Cancel</span>
-            </button>
-          </div>
-        ),
-      },
     ],
     []
   );
@@ -255,7 +209,7 @@ const Purchase = () => {
     <div className="bg-white rounded-lg p-4">
       {/* Barra de búsqueda */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-[616px] h-12 px-4 py-3 rounded-[10px] border border-[#d2d2d2] flex items-center">
+        <div className="w-full h-12 px-4 py-3 rounded-[10px] border border-[#d2d2d2] flex items-center">
           <img src={search} alt="Search" />
           <input
             type="text"
@@ -279,7 +233,7 @@ const Purchase = () => {
 
       {/* Encabezado de la tabla */}
       <div className="w-full bg-[#ecf2ff] rounded-tl-[10px] rounded-tr-[10px] px-[4.8rem] py-4">
-        <div className="flex flex-row gap-[2rem]">
+        <div className="flex flex-row justify-between w-[90%]">
           {columns.map((column, index) => (
             <div key={index} className="font-medium text-[#1a1a1a] text-sm">
               {column.Header}
@@ -289,7 +243,7 @@ const Purchase = () => {
       </div>
 
       {/* Filas de la tabla */}
-      <div className="w-[616px] border-b border-[#d2d2d2] flex flex-col">
+      <div className="w-full border-b border-[#d2d2d2] flex flex-col">
         {filteredData.map((row, index) => (
           <div key={index} className="flex justify-between items-center py-2 px-6">
             <img className="w-14 h-14 rounded-[28px]" src={row.image} alt={row.name} />
