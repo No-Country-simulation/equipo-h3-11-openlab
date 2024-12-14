@@ -4,9 +4,11 @@ import thether from '../../assets/puiconsBit/Thether.png'
 import bnb from '../../assets/puiconsBit/bnb-bnb-logo.png'
 import solana from '../../assets/puiconsBit/solana.png'
 import usb from '../../assets/puiconsBit/usd-coin-usdc-logo.png'
+import { useTranslation } from "react-i18next"
 
 
 export const CuadroBit = () => {
+    const { t } = useTranslation(["translation"])
     return (
         <div className="flex flex-wrap gap-40 mt-10 px-32">
             <div className="order-1">
@@ -95,22 +97,22 @@ export const CuadroBit = () => {
                 <div className='flex flex-wrap gap-10'>
                     <div className='order-1 mt-5'>
                         <div className=''>
-                            <span>Founded projects</span>
+                            <span>{t("userProfile.foundedProjects")}</span>
                         </div>
                         <div className='mt-10'>
-                            <span>Participated projects</span>
+                            <span>{t("userProfile.participatedProjects")}</span>
                         </div>
                         <div className='mt-12'>
-                            <span>Solved missions</span>
+                            <span>{t("userProfile.solvedMissions")}</span>
                         </div>
                         <div className='mt-12'>
-                            <span>Validated missions</span>
+                            <span>{t("userProfile.validatedMissions")}</span>
                         </div>
                         <div className='mt-12'>
-                            <span>Likes per mission</span>
+                            <span>{t("userProfile.likesMission")}</span>
                         </div>
                         <div className='mt-12'>
-                            <span>Generated tokens</span>
+                            <span>{t("userProfile.generatedTokens")}</span>
                         </div>
                        
                     </div>

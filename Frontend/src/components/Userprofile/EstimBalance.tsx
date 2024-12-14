@@ -2,13 +2,15 @@ import matic from '../../assets/matic.png'
 import down from '../../assets/down.png'
 import chart from '../../assets/chart.png'
 import rectangle from '../../assets/Rectangle.png'
+import { useTranslation } from "react-i18next"
 
 export const EstimBalance = () => {
+    const { t } = useTranslation(["translation"])
     return (
         <div className="flex flex-wrap mt-20 place-content-center px-16" >
             <div className="flex-auto gap-8">
                 <div className="flex flex-col ">
-                    <h1>Estimated balance</h1>
+                    <h1>{t("walletOptions.estimatedBalance")}</h1>
                     <div className='flex flex-row'>
                         <span className="mt-2">0,00000744</span>
                         <div className='flex felx-row ml-auto items-end place-content-center'>
@@ -41,19 +43,19 @@ export const EstimBalance = () => {
                         <img src={rectangle} alt="rectangle" />
                     </div>
                     <div className=''>
-                        <span className="text-ms/[20px]">Co-founder at Fractal</span>
+                        <span className="text-ms/[20px]">{t("userProfile.cofounderAt")}Fractal</span>
                     </div>
                     <div className='mt-10 col-start-1'>
                         <img src={rectangle} alt="rectangle" />
                     </div>
                     <div className='mt-10'>
-                        <span className="text-ms/[20px]">Workspace ouner at Shared</span>
+                        <span className="text-ms/[20px]">{t("userProfile.workspaceOunerAt")}Shared</span>
                     </div>
                     <div className='mt-10 col-start-1'>
                         <img src={rectangle} alt="rectangle" />
                     </div>
                     <div className='mt-10'>
-                        <span className="text-ms/[20px]">Colaborator at Easymed</span>
+                        <span className="text-ms/[20px]">{t("userProfile.colaboratorAt")}Easymed</span>
                     </div>
 
                 </div>
