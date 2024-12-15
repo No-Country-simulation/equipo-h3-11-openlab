@@ -16,8 +16,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    await loginWithRedirect();
-    console.log("Redirigido para iniciar sesión.");
+    await loginWithRedirect({
+      appState: { targetUrl: "/userhome" },
+    });
   };
 
   const handleLogout = () => {

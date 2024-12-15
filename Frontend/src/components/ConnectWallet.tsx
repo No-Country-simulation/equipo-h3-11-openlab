@@ -1,8 +1,10 @@
+import { useWallet } from "../context/WalletContext";
 import { useAppKit } from "@reown/appkit/react";
 import { useTranslation } from "react-i18next";
 
 export default function ConnectWallet() {
-  const { open } = useAppKit(); // Pasamos appKit manualmente
+  const { walletAddress } = useWallet();
+  const { open } = useAppKit();
   const { t } = useTranslation(["translation"]);
 
   return (
@@ -13,12 +15,18 @@ export default function ConnectWallet() {
       >
         {t("walletOptions.network")}
       </button>
-      <button
-        onClick={() => open()}
-        className="h-8 bg-[#3a23ff] text-white rounded-xl text-base font-semibold px-2"
-      >
-        {t("walletOptions.connect")}
-      </button>
+      {walletAddress ? (
+        <div className="h-8 bg-gray-200 text-gray-800 rounded-xl text-sm font-semibold px-2">
+          {`${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`}
+        </div>
+      ) : (
+        <button
+          onClick={() => open()}
+          className="h-8 bg-[#3a23ff] text-white rounded-xl text-base font-semibold px-2"
+        >
+          {t("walletOptions.connect")}
+        </button>
+      )}
     </div>
   );
 }

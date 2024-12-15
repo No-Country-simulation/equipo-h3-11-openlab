@@ -1,5 +1,4 @@
-import Favio from '../../assets/default-profile-img.png';
-import Line65 from '../../assets/navbar/line.png';
+import Favio from '../../assets/user-pic.png';
 import { FC } from 'react';
 
 interface UserProps {
@@ -9,26 +8,20 @@ interface UserProps {
 }
 
 const User: FC<UserProps> = ({ token, userName, userEmail }) => {
-  if (!token) {
-    return <p>No se pudo obtener el token.</p>;
-  }
 
   return (
-    <div className="flex flex-row items-center justify-center">
-      <div className="flex flex-row items-center">
+    <div className="flex flex-row items-center justify-evenly m-12 p-6 border-transparent rounded-xl bg-white shadow">
+      <div className="flex flex-row items-center gap-4 border-2 border-transparent border-r-slate-200 pr-8">
         <img
-          className="w-20 h-20 rounded-full"
+          className="w-24 h-24 rounded-full"
           src={Favio}
           alt="user"
         />
         <div className="flex flex-col items-start">
           <p className="mx-4 text-[24px]">{userName}</p>
           <p className="mx-4 text-[16px]">{userEmail}</p>
-          <p className="mx-4 text-[16px]">Token: {token}</p> {/* Muestra el token */}
+          <p className="mx-4 text-[16px]">Token: {token ? token : "No se pudo obtener el token."}</p> {/* Muestra el token */}
         </div>
-      </div>
-      <div className="ml-2">
-        <img className="mx-8" src={Line65} alt="Line65" />
       </div>
       <div className="ml-2">
         <p className="mx-8">

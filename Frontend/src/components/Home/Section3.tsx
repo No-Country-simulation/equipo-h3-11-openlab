@@ -40,6 +40,7 @@ const Section3: React.FC = () => {
 
   return (
     <section
+      id="blog"
       className="w-full h-[80rem] md:h-[55rem] bg-center bg-cover bg-no-repeat pt-44 md:pt-8"
       style={{ backgroundImage: `url(${BackgroundSvg})` }}
     >
