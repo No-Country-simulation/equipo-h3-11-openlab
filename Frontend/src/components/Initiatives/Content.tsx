@@ -18,7 +18,7 @@ const InitiativesContent: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 border-transparent rounded-xl bg-white shadow mr-8 p-8">
       {/* El SearchBar y los filtros pueden interactuar con el estado del componente padre */}
       <SearchBar onChange={handleSearchChange} value={searchFilter} />
       <InitiativesFilters onFilterChange={handleFilterChange} />

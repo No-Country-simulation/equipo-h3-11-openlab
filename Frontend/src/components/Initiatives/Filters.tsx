@@ -26,6 +26,12 @@ const InitiativesFilters: React.FC<InitiativesFiltersProps> = ({
   return (
     <div className="flex flex-row justify-start items-center text-slate-500 font-semibold py-4 gap-4">
       <button
+        onClick={() => handleFilterChange("all")}
+        className={buttonClass("all")}
+      >
+        {t("initiativesOptions.all")}
+      </button>
+      <button
         onClick={() => handleFilterChange("active")}
         className={buttonClass("active")}
       >
@@ -42,12 +48,6 @@ const InitiativesFilters: React.FC<InitiativesFiltersProps> = ({
         className={buttonClass("popular")}
       >
         {t("initiativesOptions.favorites")}
-      </button>
-      <button
-        onClick={() => handleFilterChange("all")}
-        className={buttonClass("all")}
-      >
-        {t("initiativesOptions.all")}
       </button>
     </div>
   );
