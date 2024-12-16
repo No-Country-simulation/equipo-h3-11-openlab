@@ -188,16 +188,16 @@ const DataTable: React.FC<DataTableProps> = ({
 
   return (
     <>
-      <div className="overflow-auto max-h-[calc(100vh-200px)]">
+      <div className="overflow-auto max-h-[calc(100vh-200px)] rounded-xl mb-8">
         <table className="table-auto w-full bg-white border-collapse">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr
                 key={headerGroup.id}
-                className="border border-transparent bg-blue-200"
+                className="bg-blue-200"
               >
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
+                  <th key={header.id} className="py-4">
                     {header.isPlaceholder
                       ? null
                       : flexRender(

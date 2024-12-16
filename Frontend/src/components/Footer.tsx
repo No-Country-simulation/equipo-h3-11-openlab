@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo-white.svg";
 import facebook from "../assets/footer/facebook.svg";
 import instagram from "../assets/footer/instagram.svg";
 import twitter from "../assets/footer/twitter.svg";
 import { useTranslation } from "react-i18next";
-import { FaLinkedin, FaGoogleDrive } from 'react-icons/fa';
 import anibal from "../assets/team/anibal.png";
 import antonio from "../assets/team/antonio.png";
 import damian from "../assets/team/damian.jpg";
@@ -14,9 +13,15 @@ import matias from "../assets/team/matias.png";
 import paula from "../assets/team/paula.jpg";
 import ricardo from "../assets/team/ricardo.png";
 import icon from "../assets/team/icon.png";
+import linkedin from "../assets/linkedin.png";
+import googleDrive from "../assets/google-drive.png";
+import close from "../assets/close.png";
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [successModal, setSuccessModal] = useState(false);
   const { t } = useTranslation(["translation"]);
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -76,6 +81,31 @@ const Footer = () => {
     setShowModal(!showModal);
   };
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setEmailError(''); // Limpiar el error al escribir
+  };
+
+  const validateEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setEmailError('Por favor ingresa un correo válido');
+      return;
+    }
+
+    // Si el correo es válido, mostrar el modal de éxito
+    setSuccessModal(true);
+
+    // Opcionalmente, puedes limpiar el campo de email
+    setEmail('');
+  };
+
   return (
     <footer className="w-full bg-white">
       <div className="mx-auto px-2 md:px-20 py-6 space-y-5">
@@ -116,9 +146,8 @@ const Footer = () => {
           <div className="flex flex-col items-end space-y-2 mx-auto md:mx-0">
             {/* Íconos sociales alineados a la derecha */}
             <div
-              className={`flex items-center space-x-5 mb-[-2rem] md:mb-0 z-20 ${
-                location.pathname !== "/" ? "mt-6" : ""
-              }  md:justify-start justify-end  `}
+              className={`flex items-center space-x-5 mb-[-2rem] md:mb-0 z-20 ${location.pathname !== "/" ? "mt-6" : ""
+                }  md:justify-start justify-end  `}
             >
               <a
                 href="https://facebook.com"
@@ -152,23 +181,51 @@ const Footer = () => {
                 <div className="text-center text-[#1a346b] md:ml-0 text-lg font-semibold mb-4">
                   Suscríbete a nuestro Boletín
                 </div>
-                <div className="flex items-center gap-6 md:ml-0 justify-between w-full max-w-[400px]">
+                <form onSubmit={handleSubmit} className="flex items-center gap-6 md:ml-0 justify-between w-full max-w-[400px]">
                   <input
                     type="email"
+                    value={email}
+                    onChange={handleEmailChange}
                     placeholder="Email"
                     className="w-[250px] h-10 px-4 border border-gray-300 rounded-md shadow-md"
                   />
-                  <button className="h-10 px-6 bg-[#3a23ff] text-white rounded-md">
+                  <button
+                    type="submit"
+                    className="h-10 px-6 bg-[#3a23ff] text-white rounded-md hover:bg-blue-700 transition-colors"
+                  >
                     Enviar
                   </button>
-                </div>
+                </form>
+                {emailError && (
+                  <p className="text-red-500 text-sm mt-2">{emailError}</p>
+                )}
               </div>
             )}
+
           </div>
         </div>
       </div>
 
       <div className="w-full border-t border-gray-300"></div>
+
+      {/* Modal de éxito */}
+      {successModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-md max-w-lg w-full">
+            <h2 className="text-xl font-bold mb-4">¡Suscripción exitosa!</h2>
+            <p className="text-gray-700">Gracias por suscribirte a nuestro boletín.</p>
+
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={() => setSuccessModal(false)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto px-6 md:px-20 py-6 space-y-2">
         {/* Sección de derechos de autor y política de privacidad */}
@@ -183,7 +240,7 @@ const Footer = () => {
             className="text-[#1a346b] text-sm font-medium cursor-pointer hover:underline"
             onClick={() => setIsModalOpen(true)}
           >
-            💗 equipo-h3-11-openlab | No Country 🌎
+            Equipo - h3 - 11 - Openlab | No Country
           </div>
           <div className="text-right text-[#1a346b] text-sm font-medium">
             © 2024 Openlab SAS
@@ -191,6 +248,7 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Modal de privacidad */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-md max-w-lg w-full">
@@ -212,50 +270,68 @@ const Footer = () => {
       )}
 
       {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white m-4 md:m-0 p-4 md:p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
-            <h2 className="text-black text-base text-center font-semibold mb-4">
-            💗 equipo-h3-11-openlab | No Country 🌎
-            </h2>
-            <div className="grid grid-cols-2 gap-4 ">
-              {teamMembers.map((member) => (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
-                >
-                  <div key={member.name} className="flex flex-col md:flex-row text-[#8163b0] bg-[#fceade] items-center p-2 border border-[#ea526f] rounded-lg">
-                    <img
-                      src={member.avatar || 'https://via.placeholder.com/150'}
-                      alt={`${member.name}'s avatar`}
-                      className="w-10 h-10 rounded-full md:mr-4"
-                    />
-                    <div className="flex flex-col items-center md:items-start">
-                      <p className="font-semibold text-xs md:text-base text-center">{member.name}</p>
-                      <div className="flex items-center mt-1">
-                        <p className="text-xs md:text-sm text-black font-semibold ">{member.role}&nbsp; </p>
-                        <div className='text-blue-500'>
-                          {member.role === 'Google Drive' ? <FaGoogleDrive /> : <FaLinkedin />}
-                        </div>
-                      </div>
-                    </div>
+{isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="bg-white m-4 md:m-0 p-4 md:p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
+      {/* Encabezado con título y botón de cierre */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-black text-lg font-bold">
+          Equipo - h3 - 11 - Openlab | No Country
+        </h2>
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="text-black text-xl font-bold hover:text-red-500 transition"
+          aria-label="Cerrar modal"
+        >
+          <img src={close} alt="close-icon" />
+        </button>
+      </div>
+
+      {/* Línea separadora */}
+      <div className="w-full border-t border-gray-300 mb-4"></div>
+
+      {/* Contenido del modal */}
+      <div className="grid grid-cols-2 gap-4">
+        {teamMembers.map((member) => (
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-105 transition-transform duration-300"
+          >
+            <div
+              key={member.name}
+              className="flex flex-col md:flex-row bg-[#ecf2ff] items-center  p-2 pr-4 border border-[#1a346b] rounded-lg"
+            >
+              <img
+                src={member.avatar || "https://via.placeholder.com/150"}
+                alt={`${member.name}'s avatar`}
+                className="w-10 h-10 rounded-full ml-2 mr-4"
+              />
+              <div className="flex flex-col items-center md:items-start">
+                <p className="font-semibold text-xs md:text-base text-center">{member.name}</p>
+                <div className="flex items-center mt-1">
+                  <p className="text-xs md:text-sm text-black font-semibold ">
+                    {member.role}&nbsp;
+                  </p>
+                  <div>
+                    {member.role === "Google Drive" ? (
+                      <img src={googleDrive} alt="Google Drive Icon" className="w-4 h-4" />
+                    ) : (
+                      <img src={linkedin} alt="LinkedIn Icon" className="w-4 h-4" />
+                    )}
                   </div>
-                </a>
-              ))}
+                </div>
+              </div>
             </div>
-            <div className="flex justify-end">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
-              >
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+
     </footer>
   );
 };

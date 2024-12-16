@@ -1,15 +1,46 @@
 import userPic from '../../assets/user-pic.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import copyIcon from '../../assets/copy.png';
-import balance from '../../assets/balance.png';
+import balance from '../../assets/ethereum.png';
 import graphic from '../../assets/graphic.svg';
+import { useWallet } from "../../context/WalletContext";
+import { useTranslation } from "react-i18next";
+import { useFetch } from '../../services/useFetch';
+
+const config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://api.coinbase.com/api/v3/brokerage/market/products/ETH-USD',
+  headers: { 
+    'Content-Type': 'application/json'
+  }
+};
 
 const UserBalance = () => {
   const [copyMessage, setCopyMessage] = useState('');
+  const { signer, walletAddress } = useWallet();
+  const { t } = useTranslation(["translation"]);
+  const { data } = useFetch(config)
+
+  const usdPrice = data?.price?.example
+  console.log(usdPrice);
+
+  const [accountBalance, setAccountBalance] = useState<any>("No disponible");
+  const [usdBalance, setUsdBalance] = useState<any>("No disponible");
+
+  useEffect(() => {
+    signer?.getBalance("latest")
+      .then((res) => {
+        let stringNumber = res.toString()
+        let number = Number(stringNumber.replace(/[0]{13}/g, "")) // Para sacarle los 0 extras y convertirlo en valor entendible
+        let finalNumber = number / 100000
+        setAccountBalance(finalNumber)      
+      })
+      .finally(() => usdPrice ? setUsdBalance(usdPrice) : "")
+  }, [])
 
   const handleCopy = () => {
-    const token = '9x22Vd76DD34E7a9c680xb613D8a';
-    navigator.clipboard.writeText(token).then(() => {
+    navigator.clipboard.writeText(walletAddress).then(() => {
       setCopyMessage('¡Copiado!');
       setTimeout(() => setCopyMessage(''), 2000); // Mensaje desaparece después de 2 segundos
     });
@@ -27,7 +58,7 @@ const UserBalance = () => {
           />
           <div className="flex flex-col">
             <span className="text-3xl font-semibold text-gray-800">$1,671.78</span>
-            <span className="text-gray-600">Total Value</span>
+            <span className="text-gray-600">{t("walletOptions.totalValue")}</span>
           </div>
         </div>
         <hr className="w-full border-t border-gray-300 my-4" />
@@ -40,7 +71,7 @@ const UserBalance = () => {
           </button>
           <div className="flex items-center gap-2 bg-gray-50 border border-blue-100 rounded-lg px-4 py-2">
             <div className="text-gray-500 font-medium overflow-hidden text-ellipsis">
-              9x22Vd76DD34E7a9c680xb613D8a
+              { walletAddress ? walletAddress : "No Disponible" }
             </div>
           </div>
         </div>
@@ -54,11 +85,11 @@ const UserBalance = () => {
         {/* Columna Izquierda */}
         <div className="flex-1 pr-4">
           <div className="mb-4">
-            <span className="block text-lg font-medium text-gray-800">Estimated balance</span>
+            <span className="block text-lg font-medium text-gray-800">{t("walletOptions.estimatedBalance")}</span>
             <div className="flex justify-between items-center mt-2">
               <div className="flex flex-col">
-                <span className="text-xl font-medium text-gray-800">0,00000744</span>
-                <span className="block text-sm text-gray-600 mt-1">= $0.50120936</span>
+                <span className="text-xl font-medium text-gray-800">{accountBalance} ETH</span>
+                {usdBalance &&<span className="block text-sm text-gray-600 mt-1">= ${usdBalance}</span>}
               </div>
             </div>
           </div>
@@ -70,13 +101,12 @@ const UserBalance = () => {
                 alt="Currency Icon"
               />
               <div className="flex flex-col">
-                <span className="text-gray-800 text-base font-medium">MATIC</span>
-                <span className="text-gray-500 text-sm">ETH</span>
+                <span className="text-gray-800 text-base font-medium">ETH</span>
               </div>
             </div>
             <div className="flex flex-col items-end">
-              <span className="text-blue-600 text-base font-medium">+0.63%</span>
-              <span className="text-gray-500 text-sm">$67,671.7</span>
+              <span className="text-blue-600 text-base font-medium"> - % </span>
+              <span className="text-gray-500 text-sm"> $ - </span>
             </div>
           </div>
         </div>

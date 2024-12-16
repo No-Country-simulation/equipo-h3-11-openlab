@@ -43,7 +43,10 @@
     },
     "walletOptions": {
         "connect": "Conectar Wallet",
-        "network": "Seleccionar Red"
+        "network": "Seleccionar Red",
+        "totalValue": "Valor Total",
+        "estimatedBalance": "Balance estimado",
+        "keyCopy": "¡Copiado!"
     },
     "initiativesOptions": {
         "create": "Crear",
@@ -106,5 +109,16 @@
         "section5Title": "Es tiempo de cambiar las reglas de juego, no de aprender a jugarlo",
         "section5Description": "Creemos que la única manera de cambiar realmente a la sociedad, es a través de la democratización del acceso a una educación práctica en la que se le permita a cualquier persona de cualquier parte del mundo, contribuir a crear los proyectos y tecnologías que determinarán el curso de la civilización.",
         "more": "Más información"
+    },
+    "userProfile": {
+        "foundedProjects": "Proyectos Fundados",
+        "participatedProjects": "Proyectos que participas",
+        "solvedMissions": "Misiones resueltas",
+        "validatedMissions": "Misiones validadas",
+        "likesMission": "'Me gusta' por misión",
+        "generatedTokens": "Tokens generados",
+        "cofounderAt": "Cofundador en ",
+        "workspaceOunerAt": "Propietario en ",
+        "colaboratorAt": "Colaborador en "
     }
 }
