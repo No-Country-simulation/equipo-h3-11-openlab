@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import { useWallet } from "../../context/WalletContext";
-import { createOrderbook } from "../../helpers/factoryHelper";
+import {
+  createOrderbook,
+  //getOrderbookAddress,
+} from "../../helpers/factoryHelper";
 import { CONTRACTS } from "../../utils/constants";
 import { ethers } from "ethers";
 import { ABIs } from "../../utils/abi";
+import { useExampleData } from "../../context/ExampleDataContext";
 
 interface DAOCreationFormModalProps {
   isOpen: boolean;
@@ -15,6 +20,7 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
   onClose,
 }) => {
   const { signer } = useWallet();
+  const { addData } = useExampleData(); // Acceder a la función para agregar iniciativas
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -32,7 +38,8 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  // Cierra el modal cuando el usuario haga clic fuera de él
+  const token1Address = CONTRACTS.token1;
+
   const handleOutsideClick = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       onClose();
@@ -41,20 +48,16 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      // Cuando el modal se abre, agregar el evento para cerrar cuando se haga clic fuera
       document.addEventListener(
         "mousedown",
         handleOutsideClick as EventListener
       );
     } else {
-      // Cuando el modal se cierra, quitar el evento
       document.removeEventListener(
         "mousedown",
         handleOutsideClick as EventListener
       );
     }
-
-    // Limpiar el efecto cuando el modal se desmonta
     return () => {
       document.removeEventListener(
         "mousedown",
@@ -62,10 +65,6 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
       );
     };
   }, [isOpen]);
-
-  if (!isOpen) return null; // Si el modal no está abierto, no renderizar nada
-
-  const token1Address = CONTRACTS.token1;
 
   const validateField = (name: string, value: string): string => {
     if (!value.trim()) return `El campo ${name} es obligatorio.`;
@@ -92,12 +91,12 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      alert("Corrige los errores antes de crear el token.");
+      toast.error("Corrige los errores antes de crear el token.");
       return;
     }
 
     if (!signer) {
-      alert("Por favor, conecta tu wallet antes de continuar.");
+      toast.error("Por favor, conecta tu wallet antes de continuar.");
       return;
     }
 
@@ -125,11 +124,11 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
       const tokenAddress = event.args?.[0];
       setCreatedTokenAddress(tokenAddress);
 
-      alert(`Token creado con éxito: ${tokenAddress}`);
+      toast.success(`Token creado con éxito: ${tokenAddress}`);
       setStep(2);
     } catch (error: unknown) {
       console.error("Error al crear el token:", error);
-      alert(
+      toast.error(
         `Error al crear el token: ${
           error instanceof Error ? error.message : "Error desconocido."
         }`
@@ -150,12 +149,12 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      alert("Corrige los errores antes de crear la DAO.");
+      toast.error("Corrige los errores antes de crear la DAO.");
       return;
     }
 
-    if (!signer) {
-      alert("Por favor, conecta tu wallet antes de continuar.");
+    if (!signer || !signer.provider) {
+      toast.error("Por favor, conecta tu wallet antes de continuar.");
       return;
     }
 
@@ -163,15 +162,47 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
     try {
       const factoryAddress = CONTRACTS.factory;
 
-      await createOrderbook(
+      const tx = await createOrderbook(
         factoryAddress,
         signer,
         token1Address,
         createdTokenAddress as string
       );
-      alert(
-        `DAO creada exitosamente. Par creado:\nToken1: ${token1Address}\nToken2: ${createdTokenAddress}`
+
+      // Esperar a que la transacción sea confirmada
+      const receipt = await tx.wait();
+      console.log("Transacción confirmada:", receipt.transactionHash);
+
+      // Buscar el evento 'NewPair' en el recibo
+      const event = receipt.events?.find(
+        (e: ethers.Event) => e.event === "NewPair"
       );
+      if (!event) throw new Error("No se encontró el evento NewPair.");
+
+      // Extraer los argumentos del evento
+      const [emittedTokenA, emittedTokenB, orderbookAddress] = event.args || [];
+
+      // Realizar acciones con la dirección del orderbook
+      toast.success(
+        `Par creado con éxito: ${emittedTokenA} - ${emittedTokenB}\nOrderbook: ${orderbookAddress}`
+      );
+
+      // Crear una nueva iniciativa después de crear la DAO
+      addData({
+        id: Math.floor(Math.random() * 1000), // Puedes generar un ID único aquí
+        name: formData.name,
+        priceFluctation: "",
+        collaborators: 0,
+        marketPrices: "0/0",
+        tokens: "0k/0",
+        missions: "0/0",
+        likes: 0,
+        shares: 0,
+        init: new Date().toLocaleDateString(),
+        token1: token1Address,
+        token2: createdTokenAddress as string,
+        orderbook: orderbookAddress, // Usa el orderbook recibido del blockchain
+      });
 
       setFormData({
         name: "",
@@ -182,10 +213,11 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
       });
       setCreatedTokenAddress(null);
       setStep(1);
+      onClose();
     } catch (error: unknown) {
-      console.error("Error al crear la DAO:", error);
-      alert(
-        `Error al crear la DAO: ${
+      console.error("Error al crear la Iniciativa:", error);
+      toast.error(
+        `Error al crear la Iniciativa: ${
           error instanceof Error ? error.message : "Error desconocido."
         }`
       );
@@ -314,8 +346,8 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
                   type="submit"
                   className={`w-full py-2 px-4 ${
                     loading ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
-                  } text-white font-bold rounded-lg`}
-                  disabled={loading}
+                  } text-white font-bold rounded-lg}
+                  disabled={loading`}
                 >
                   {loading ? "Creando Iniciativa..." : "Crear Iniciativa"}
                 </button>
@@ -327,4 +359,5 @@ const DAOCreationFormModal: React.FC<DAOCreationFormModalProps> = ({
     </div>
   );
 };
+
 export default DAOCreationFormModal;

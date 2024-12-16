@@ -19,12 +19,13 @@ import {
 } from "@tanstack/react-table";
 import { rankItem, RankingInfo } from "@tanstack/match-sorter-utils";
 import classNames from "classnames";
-import { exampleData } from "../../data/exampleData";
+//import { exampleData } from "../../data/exampleData";
+import { useExampleData } from "../../context/ExampleDataContext";
 import fluctuation from "../../assets/price-fluctuation.png";
 import OrderbookInteraction from "../OrderbookInteraction";
 
 // Definición del tipo de datos
-interface DataRow {
+export interface DataRow {
   name: string;
   priceFluctation: string;
   collaborators: number;
@@ -35,6 +36,9 @@ interface DataRow {
   shares: number;
   actions?: string;
   init: string;
+  token1: string;
+  token2: string;
+  orderbook: string;
 }
 
 interface DataTableProps {
@@ -64,15 +68,20 @@ const DataTable: React.FC<DataTableProps> = ({
   activeFilter,
 }) => {
   const { t } = useTranslation(["translation"]);
+  const { data } = useExampleData(); // Usamos el contexto para obtener los datos
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Estado para almacenar la fila seleccionada
+  const [selectedRow, setSelectedRow] = useState<DataRow | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // Función para abrir el modal con la fila seleccionada
+  const openModal = (row: DataRow) => setSelectedRow(row);
+
+  // Función para cerrar el modal
+  const closeModal = () => setSelectedRow(null);
 
   // Filtrado de datos según el filtro
   const filteredData = useMemo(
-    () => applyFilters(exampleData, searchFilter, activeFilter),
+    () => applyFilters(data, searchFilter, activeFilter),
     [searchFilter, activeFilter]
   );
 
@@ -128,10 +137,10 @@ const DataTable: React.FC<DataTableProps> = ({
     {
       accessorKey: "actions",
       header: () => <span>{t("initiativesOptions.actions")}</span>,
-      cell: () => (
+      cell: ({ row }) => (
         <div className="flex flex-row space-x-2">
           <button
-            onClick={openModal}
+            onClick={() => openModal(row.original)} // Pasa los datos de la fila
             className="bg-blue-500 rounded-xl text-white px-1 py-2 font-semibold"
           >
             {t("initiativesOptions.buy")}
@@ -211,8 +220,12 @@ const DataTable: React.FC<DataTableProps> = ({
               </tr>
             ))}
           </tbody>
-          {isModalOpen && (
-            <OrderbookInteraction isOpen={isModalOpen} onClose={closeModal} />
+          {selectedRow && (
+            <OrderbookInteraction
+              isOpen={!!selectedRow} // Verifica si hay datos seleccionados
+              onClose={closeModal}
+              rowData={selectedRow} // Pasa la fila seleccionada como prop
+            />
           )}
         </table>
 
