@@ -72,9 +72,22 @@ export const mintTokens = async (
   signer: ethers.Signer,
   tokenAddress: string,
   recipient: string,
-  amount: number
-) => {
+  amount: ethers.BigNumber
+): Promise<ethers.providers.TransactionResponse> => {
+  // Cambiado el retorno a TransactionResponse
   const token = getERC20DynamicContract(tokenAddress, signer);
   const tx = await token.mint(recipient, amount);
-  await tx.wait();
+  return tx; // Devolver la transacción
+};
+
+export const approveTokens = async (
+  signer: ethers.Signer,
+  tokenAddress: string,
+  approver: string,
+  amount: ethers.BigNumber
+): Promise<ethers.providers.TransactionResponse> => {
+  // Cambiado el retorno a TransactionResponse
+  const token = getERC20DynamicContract(tokenAddress, signer);
+  const tx = await token.approve(approver, amount);
+  return tx; // Devolver la transacción
 };

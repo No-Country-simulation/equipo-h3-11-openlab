@@ -6,6 +6,7 @@ import "./i18n"; // Importar configuración de i18n
 import { Auth0Provider } from "@auth0/auth0-react";
 import { ContextProvider } from "./context/index.tsx";
 import { WalletProvider } from "./context/WalletContext.tsx";
+import { ExampleDataProvider } from "./context/ExampleDataContext.tsx";
 
 // Variables de entorno
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
@@ -24,7 +25,9 @@ createRoot(document.getElementById("root")!).render(
     >
       <ContextProvider>
         <WalletProvider>
-          <App />
+          <ExampleDataProvider>
+            <App />
+          </ExampleDataProvider>
         </WalletProvider>
       </ContextProvider>
     </Auth0Provider>
