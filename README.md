@@ -3,6 +3,7 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 
 <p align="center">
  Web de desarrollo: 
+ https://equipo-h3-11-openlab.vercel.app/
 </p>
 
 ## Badges
@@ -101,3 +102,50 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dambedev/)
 [![github](https://img.shields.io/badge/github-grey?style=flat&logo=github&logoColor=white)](https://www.github.com/DamBeDev)
 [![mail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:d.berrojalvis@dambedev.com)
+
+<hr size="8px"/>
+
+# Instrucciones de Instalación Local
+## Frontend
+    *Estos pasos son para instalar el FRONTEND* de manera local:
+
+1. Forkee y Clone el repositorio:
+
+```bash
+git clone https://github.com/No-Country-simulation/equipo-h3-11-openlab.git
+```
+
+2. Ingresar a carpeta client con `cd Frontend` en su terminal.
+
+3. Instale las dependencias: En este caso puede usar el Gestor de Packetes que quiera. Recomendamos npm
+
+```bash
+npm install
+```
+
+4. Crear archivo `.env` en la raiz del proyecto con los siguientes campos:
+
+```bash
+VITE_REOWN_PROJECT_ID: ***
+VITE_REOWN_RED: Sepolia
+VITE_REOWN_CHAIN_ID: ***
+
+REACT_APP_RPC_URL= ***
+
+VITE_AUTH0_DOMAIN= ***
+VITE_AUTH0_CLIENT_ID= ***
+VITE_AUTH0_AUDIENCE= ***
+VITE_AUTH0_SERVER= ***
+```
+
+5. Construir la configuración de despliegue y detección de errores:
+
+```bash
+npm run build
+```
+
+6. Desplegar en entorno local de desarrollo:
+
+```bash
+npx vite --port 4200
+```
