@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { CirclePlus } from "lucide-react";
 import { useState } from "react";
+//import IniciativeCreationModal from "../CrearIniciativa/DAOCreationFormModal";
 import DAOCreationFormModal from "../CrearIniciativa/DAOCreationFormModal";
 
 const InitiativesHeader = () => {
