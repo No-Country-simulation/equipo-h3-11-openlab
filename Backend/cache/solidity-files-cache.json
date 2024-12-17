@@ -113,8 +113,8 @@
       ]
     },
     "F:\\Users\\Ian\\Desktop\\Antuil\\2024\\Cursos\\No Country\\Hackaton 2411\\equipo-h3-11-openlab\\Backend\\contracts\\OrderBookFactory.sol": {
-      "lastModificationDate": 1732835049664,
-      "contentHash": "9bf29a2963c114b23120d7f0ae2a9031",
+      "lastModificationDate": 1734392942191,
+      "contentHash": "4f0e360333097b593e334a81cf073d15",
       "sourceName": "contracts/OrderBookFactory.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -141,7 +141,6 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/access/Ownable.sol",
         "@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "./OrderBook.sol"
       ],
