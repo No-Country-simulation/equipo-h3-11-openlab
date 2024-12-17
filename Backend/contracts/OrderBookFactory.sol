@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-// Importa el contrato Ownable de OpenZeppelin para gestionar la propiedad del contrato
-import "@openzeppelin/contracts/access/Ownable.sol";
+
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./OrderBook.sol";
 
@@ -11,7 +10,7 @@ import "./OrderBook.sol";
  * @dev Este contrato actúa como una fábrica para crear múltiples Orderbooks para pares de tokens únicos.
  * Si ya existe un Orderbook para un par de tokens, la ejecución del contrato revertirá.
  */
-contract OrderbookFactory is Ownable {
+contract OrderbookFactory {
    
    // Número de pares soportados
     uint256 public pairsSupported;
@@ -22,12 +21,7 @@ contract OrderbookFactory is Ownable {
     // Evento emitido cada vez que se agrega un nuevo par de tokens
     event NewPair(address indexed token1, address indexed token2, address orderbook);
 
-    /**
-     * @dev Constructor de la fábrica. Configura la propiedad inicial del contrato.
-     */
-    constructor() Ownable(msg.sender) {
-        // No requiere parámetros adicionales. Se inicializa con el propietario definido por OpenZeppelin.
-    }
+       
 
     /**
      * @dev Crea una nueva instancia del contrato Orderbook para el par de tokens especificado.
@@ -40,7 +34,7 @@ contract OrderbookFactory is Ownable {
      *
      * Emite el evento NewPair tras la creación exitosa.
      */
-    function addPair(address _token1, address _token2) external onlyOwner {
+    function addPair(address _token1, address _token2) external  {
         require(_token1 != _token2, "Los tokens deben ser diferentes");
 
         address tokenA;

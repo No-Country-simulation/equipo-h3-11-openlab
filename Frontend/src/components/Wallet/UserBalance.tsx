@@ -1,50 +1,14 @@
 import userPic from '../../assets/user-pic.png';
-import { useState, useEffect } from 'react';
 import copyIcon from '../../assets/copy.png';
 import balance from '../../assets/ethereum.png';
 import graphic from '../../assets/graphic.svg';
-import { useWallet } from "../../context/WalletContext";
 import { useTranslation } from "react-i18next";
-import { useFetch } from '../../services/useFetch';
-
-const config = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  url: 'https://api.coinbase.com/api/v3/brokerage/market/products/ETH-USD',
-  headers: { 
-    'Content-Type': 'application/json'
-  }
-};
+import { useWalletData } from '../../services/useWalletData';
 
 const UserBalance = () => {
-  const [copyMessage, setCopyMessage] = useState('');
-  const { signer, walletAddress } = useWallet();
   const { t } = useTranslation(["translation"]);
-  const { data } = useFetch(config)
-
-  const usdPrice = data?.price?.example
-  console.log(usdPrice);
-
-  const [accountBalance, setAccountBalance] = useState<any>("No disponible");
-  const [usdBalance, setUsdBalance] = useState<any>("No disponible");
-
-  useEffect(() => {
-    signer?.getBalance("latest")
-      .then((res) => {
-        let stringNumber = res.toString()
-        let number = Number(stringNumber.replace(/[0]{13}/g, "")) // Para sacarle los 0 extras y convertirlo en valor entendible
-        let finalNumber = number / 100000
-        setAccountBalance(finalNumber)      
-      })
-      .finally(() => usdPrice ? setUsdBalance(usdPrice) : "")
-  }, [])
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(walletAddress).then(() => {
-      setCopyMessage('¡Copiado!');
-      setTimeout(() => setCopyMessage(''), 2000); // Mensaje desaparece después de 2 segundos
-    });
-  };
+  const { walletAddress, copyMessage, accountBalance, usdBalance, handleCopy } = useWalletData();
+  
 
   return (
     <div className="flex flex-col md:flex-row justify-end items-center gap-8 p-4">
