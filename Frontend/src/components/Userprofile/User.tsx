@@ -18,18 +18,29 @@ const User: FC<UserProps> = ({ token, userName, userEmail }) => {
           alt="user"
         />
         <div className="flex flex-col items-start">
-          <p className="mx-4 text-[24px]">{userName}</p>
-          <p className="mx-4 text-[16px]">{userEmail}</p>
-          <p className="mx-4 text-[16px]">Token: {token ? token : "No se pudo obtener el token."}</p> {/* Muestra el token */}
+          <p className="mx-4 text-lg font-bold">{userName}</p>
+          <p className="mx-4 text-base">{userEmail}</p>
+          <p className="mx-4 text-sm">Token: {token ? token : "No se pudo obtener el token."}</p> {/* Muestra el token */}
         </div>
       </div>
       <div className="ml-2">
         <p className="mx-8">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit
-          doloremque rerum quaerat? <br />
-          Eos, veritatis! Officia ducimus, ea porro reprehenderit similique
-          nemo quam asperiores <br />
-          fugiat odio sint distinctio, sed ipsa provident!
+          Soy un emprendedor apasionado por la innovación y la tecnología. 
+        </p>
+        <p className="mx-8">
+          Actualmente, soy fundador/a y CEO de DAMBEDEV, donde trabajamos
+        </p>
+        <p className="mx-8">  
+          para ofrecer soluciones innovadoras y transversales que integren web e IoT.
+        </p>
+        <p className="mx-8">
+          Además de liderar DAMBEDEV, disfruto de participar dentro
+        </p>
+        <p className="mx-8">
+          de las simulaciones laborales y hackathones de No Country Tech, compartiendo
+        </p>
+        <p className="mx-8">
+          conocimientos y experiencias con personas de distintos países de habla hispana.
         </p>
       </div>
     </div>
