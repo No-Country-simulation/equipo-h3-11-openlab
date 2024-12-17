@@ -1,6 +1,6 @@
 //Constantes para los contratos
 export const CONTRACTS = {
-  factory: "0x3DB4Fe5df67E68Bd1c082879c309Ca8f6509d601",
+  factory: "0x20c2Ac83bF838395158e27b2FcBfEC0C40A5d954",
   token1: "0xd85d261cf44f819bC9A34445e5f370A8a89EE22d",
   token2: import.meta.env.REACT_APP_TOKEN2_ADDRESS!,
   orderbook: import.meta.env.REACT_APP_ORDERBOOK_ADDRESS!,
