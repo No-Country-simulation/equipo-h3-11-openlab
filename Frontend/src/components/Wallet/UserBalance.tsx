@@ -6,6 +6,7 @@ import graphic from '../../assets/graphic.svg';
 import { useWallet } from "../../context/WalletContext";
 import { useTranslation } from "react-i18next";
 import { useFetch } from '../../services/useFetch';
+// import { useWalletInfo } from '@reown/appkit/react'
 
 const config = {
   method: 'get',
@@ -21,6 +22,9 @@ const UserBalance = () => {
   const { signer, walletAddress } = useWallet();
   const { t } = useTranslation(["translation"]);
   const { data } = useFetch(config)
+  // const { walletInfo } = useWalletInfo()
+  // console.log(walletInfo);
+  
 
   const usdPrice = data?.price?.example
   console.log(usdPrice);
@@ -32,8 +36,8 @@ const UserBalance = () => {
     signer?.getBalance("latest")
       .then((res) => {
         let stringNumber = res.toString()
-        let number = Number(stringNumber.replace(/[0]{13}/g, "")) // Para sacarle los 0 extras y convertirlo en valor entendible
-        let finalNumber = number / 100000
+        let number = Number(stringNumber) // Para sacarle los 0 extras y convertirlo en valor
+        let finalNumber = number / 1000000000000000000
         setAccountBalance(finalNumber)      
       })
       .finally(() => usdPrice ? setUsdBalance(usdPrice) : "")
