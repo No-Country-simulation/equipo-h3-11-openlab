@@ -106,8 +106,10 @@ Propuesta de aplicación de participación en DAOs para OpenLab, dentro del marc
 <hr size="8px"/>
 
 # Instrucciones de Instalación Local
+
 ## Frontend
-    *Estos pasos son para instalar el FRONTEND* de manera local:
+
+Estos pasos son para instalar el FRONTEND de manera local:
 
 1. Forkee y Clone el repositorio:
 
